@@ -1,0 +1,2 @@
+app: node boot.js
+assets: (cd www && gulp dev)

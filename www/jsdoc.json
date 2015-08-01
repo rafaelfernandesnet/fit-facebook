@@ -1,0 +1,30 @@
+{
+  "tags"      : {
+    "allowUnknownTags" : true
+  },
+  "plugins"   : ["plugins/markdown"],
+  "templates": {
+      "cleverLinks": false,
+      "monospaceLinks": false,
+      "default": {
+          "outputSourceFiles": true
+      },
+      "systemName"      : "FitFacebook",
+      "footer"          : "",
+      "navType"         : "vertical",
+      "theme"           : "journal",
+      "linenums"        : true,
+      "collapseSymbols" : false,
+      "inverseNav"      : true
+  },"source": {
+    "include": ["../README.md", "./public/app.js", "./public/modules/**/*app.js"]
+  },
+  "markdown"  : {
+    "parser"   : "gfm",
+    "hardwrap" : true
+  },
+  "opts" : {
+    "version": false,
+    "verbose": true
+  }
+}
