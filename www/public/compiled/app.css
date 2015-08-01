@@ -1,0 +1,15 @@
+/* Use public/css/vars.less to define global variables */
+.ff-core {
+  color: #555; }
+  .ff-core footer {
+    position: fixed;
+    bottom: 0; }
+  .ff-core .supper-wrapper {
+    min-height: 100%; }
+
+body {
+  height: 100%; }
+
+/* Use public/css/vars.less to define global variables */
+/* Use public/css/vars.less to define global variables */
+/* Use public/css/vars.less to define global variables */

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: app.js</title>
+    <title>JSDoc: Source: modules/ff-news/ff.news.app.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: app.js</h1>
+    <h1 class="page-title">Source: modules/ff-news/ff.news.app.js</h1>
 
     
 
@@ -25,32 +25,18 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>/**
- * Main module, should be used in the ng-app.
- * @module FitFacebook 
- */
-var ngModule = angular.module('FitFacebook', [
-    'ngAnimate', 'ngRoute', 'ngMessages',
-    'ngCookies', 'ngSanitize', 
-    'ngResource', 'underscore',
-    
-   'ff.dashboardModule',
-   'ff.newsModule',
-   'ff.friendModule',
-   'ff.coreModule'
-])
-
-
-require('./components/ng-underscore/ng-underscore.js');
+            <pre class="prettyprint source linenums"><code>
+var activities = require('./ff.news.feed.directive.js');
 /**
- * INJECT the module in the FitFacebook Module, AS IT IS ABOVE.
- * LOAD the module, SO IT IS BELLOW.
+ * Responsible for news content
+ *
+ * @module ff.newsModule 
+ * @see ffNewsService 
+ * @see ffNewsFeed
  */
-
-require('./modules/ff-core/ff.core.app.js');
-require('./modules/ff-friend/ff.friend.app.js');
-require('./modules/ff-news/ff.news.app.js');
-require('./modules/ff-dashboard/ff.dashboard.app.js');
+angular.module('ff.newsModule', [])
+    .factory('ffNewsService', require('./ff.news.service.js'))
+    .directive(activities.name, activities.directive)
 </code></pre>
         </article>
     </section>

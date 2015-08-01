@@ -14,5 +14,6 @@ www/public/bower_components/
 
 *.swp
 
+www/public/compiled/
 www/public/moduleGenerator/*
 www/ff.js
