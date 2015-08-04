@@ -103,6 +103,9 @@ div#my-name {
     margin-top: 0;
     margin-bottom: 0; }
 
+.fb-login-button {
+  float: right; }
+
 .news-feed > div.news {
   padding: 0.5em;
   padding-top: 1.6em;
