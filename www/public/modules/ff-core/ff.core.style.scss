@@ -1,0 +1,110 @@
+.text-primary{
+  color: #08c;
+}
+
+nav a {
+    color: $menu-text-color;
+    padding-right: 1em;
+    font-size: 1.2em;
+    text-decoration: none !important;
+}
+nav a:focus{
+  color: $menu-text-faded-color;
+}
+nav a:hover{
+  color: $menu-text-faded-color;
+}
+nav a:active{
+  color: $menu-text-faded-color;
+}
+
+nav {
+  background-color: $menu-bg-color;
+  height: 4em;
+  line-height: 4em;
+  color: $menu-text-faded-color;
+}
+
+body{
+  background-color: #f0f0f0;
+  color: #777;
+  height:100%;
+}
+html{
+  height:100%;
+}
+
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+  display: none !important;
+}
+
+.login-container{
+  width: 100%;
+  background-color: #ccc;
+  height: 100%;
+  position: absolute;
+  text-align: center;
+  padding-top: 43vh;
+
+  a{
+    border: 1px solid $primary-color;
+    padding: 1em;
+    padding-left: 3em;
+    padding-right: 3em;
+    border-radius: 0.5em;
+    font-size: 2em;
+  }
+}
+.supper-wrapper {
+  position: relative;
+  width: 100%;
+  min-height: 100%;
+  #content {
+    padding-bottom: 10em;
+  }
+  footer {
+    width: 100%;
+    height: 100px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    border-top: 1px solid #ccc;
+    padding-top: 1.5em;
+    text-align: center;
+  }
+}
+
+#master{
+  height:100%;
+}
+h1{
+  color: $primary-color;
+}
+.small.progress {
+    font-size: 6px;
+    background: none;
+    border: none;
+    box-shadow: none;
+    position: absolute;
+    top: 2em;
+}
+
+@media (min-width: 1281px) {
+  .small.progress{
+    left:3em;
+  }
+}
+@media (max-width: 1280px) {
+  .small.progress{
+    right:3em;
+  }
+}
+
+input[type="text"]{
+    width:22em;
+    border-radius: 2em;
+}
+input:focus[type="text"]{
+    border-color: $primary-color; 
+    box-shadow: none;
+}

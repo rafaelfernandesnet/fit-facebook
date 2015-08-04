@@ -1,29 +1,20 @@
-var friends = require('./mockedFriends');
-var activities = require('./mockedActivities');
+var facebook = require('./facebook');
+var request = require('request');
 
-module.exports = [{ 
+module.exports = [{
   apiType: 'get',
-  path: '/api/frieds/',
-  fn: function(req, res) {
-    setTimeout(function() {
-      res.send(friends);
-    }, 800);
-  }
-},{ 
-  apiType: 'get',
-  path: '/api/activities/',
-  fn: function(req, res) {
-    setTimeout(function() {
-      res.send(activities);
-    }, 800);
-  }
-},{
-  apiType: 'post',
-  path: '/me/feed/:message',
-  fn: function(req, res) {
-    setTimeout(function() {
-      res.send(true);
-    }, 800);
-  }
+  path: '/authorize',
+  fn: getAuthenticationToken
+}];
+
+function getAuthenticationToken(req, res) {
+  request(facebook.authenticate(req.query.code), 
+      function(error, response, body) {
+          if (!error && response.statusCode == 200) {
+            res.send(body);
+          } else {
+            res.send({errorMessage:'facebook declined the authentication.'})
+          }
+      });
 }
-];
+

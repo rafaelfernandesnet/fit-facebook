@@ -1,46 +1,56 @@
 <!DOCTYPE html>
 <html ng-app="FitFacebook" ng-controller="ffCoreController as coreVm">
 
-<head>
+  <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <title>Fit Facebook</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
+    <base href="/">
     <!-- build:css css/app.min.css -->
     <link rel="stylesheet" type="text/css" href="./bower_components/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="./css/spinner.css" />
     <link rel="stylesheet" type="text/css" href="./compiled/app.css" />
     <!-- endbuild -->
-</head>
+  </head>
 
-<body>
-  <div class="supper-wrapper">
-    <nav>
-      <div class="container">
-        <a ng-href="/#/">News</a>
-        <a ng-href="/#/friends">Friends</a>
+  <body>
+    <div class="login-container" ng-if="!coreVm.token"><a class="btn btn-primary" href="https://www.facebook.com/dialog/oauth?client_id=155870204744672&redirect_uri=http://localhost:8888/&expiry=86400&scope=email,user_posts,publish_actions,user_friends">login using Facebook</a></div>
+    <div id="master" ng-cloak ng-if="coreVm.token">
+      <div class="supper-wrapper">
+        <header>
+          <div class="fb-login-button" data-max-rows="10" data-size="xlarge" data-show-faces="true" data-auto-logout-link="true"></div>
+          <nav>
+            <div class="container">
+              <a ng-href="/#/">News</a>
+              <a ng-href="/#/friends">Friends</a>
+            </div>
+          </nav>
+        </header>
+        <section id="content" class="ff-core container" ng-view>
+
+        </section>
+        <footer>
+          <div class="container">
+          <p>This is a demo app.</p>
+          <p>I hope you enjoyed it.</p>
+          </div>
+        </footer>
       </div>
-    </nav>
-    <div class="ff-core container" ng-view>
-
     </div>
-    <footer class="container">
-      <p>This is a demo app.</p>
-      <p>I hope you enjoyed it.</p>
-    </footer>
-  </div>
-  <!-- build:js js/app.min.js -->
-  <script src="./bower_components/jquery/dist/jquery.js"></script>
-  <script src="./bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-  <script src="./bower_components/angular/angular.js"></script>
-  <script src="./bower_components/angular-animate/angular-animate.js"></script>
-  <script src="./bower_components/angular-route/angular-route.js"></script>
-  <script src="./bower_components/angular-messages/angular-messages.js"></script>
-  <script src="./bower_components/angular-cookies/angular-cookies.js"></script>
-  <script src="./bower_components/angular-sanitize/angular-sanitize.js"></script>
-  <script src="./bower_components/angular-resource/angular-resource.js"></script>
-  <script src="./bower_components/underscore/underscore.js"></script>
-  <script src="./compiled/app.js"></script>
-  <!-- endbuild -->
+    <!-- build:js js/app.min.js -->
+    <script src="./bower_components/jquery/dist/jquery.js"></script>
+    <script src="./bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="./bower_components/angular/angular.js"></script>
+    <script src="./bower_components/angular-animate/angular-animate.js"></script>
+    <script src="./bower_components/angular-route/angular-route.js"></script>
+    <script src="./bower_components/angular-messages/angular-messages.js"></script>
+    <script src="./bower_components/angular-cookies/angular-cookies.js"></script>
+    <script src="./bower_components/angular-sanitize/angular-sanitize.js"></script>
+    <script src="./bower_components/angular-resource/angular-resource.js"></script>
+    <script src="./bower_components/underscore/underscore.js"></script>
+    <script src="./bower_components/moment/moment.js"></script>
+    <script src="./compiled/app.js"></script>
+    <!-- endbuild -->
 </html>

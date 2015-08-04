@@ -63,10 +63,20 @@ gulp.task('js:watch', function() {
   gulp.watch('./public/modules/**/*.js', ['js:compile']);
 });
 
-gulp.task('doc:generate', function(){
+gulp.task('jsdoc:generate', function(){
    gulp.src(["../README.md", "./public/app.js", "./public/modules/**/*.js"])
         .pipe(jsdoc('./doc'))
 });
+
+gulp.task('doc:generate', shell.task([ 
+      './node_modules/jsdoc/jsdoc.js '+ 
+   '-c ./node_modules/angular-jsdoc/conf.json '+   // config file
+   '-t ./node_modules/angular-jsdoc/template '+    // template file
+   '-d ./docs '+                                   // output directory
+   '../README.md ' +                               // to include README.md as index contents
+   '-r ./public/app.js ' +                          // source code app.js
+   '-r ./public/modules/**/*.js'                   // source code directory
+])); 
 
 function useKarma(autotest) {
   return function() {

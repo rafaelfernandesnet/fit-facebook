@@ -7,8 +7,7 @@ module.exports ={
  * Controlls the main dashboard area.
  *
  * @class ffFriendController
- * @see ff.friendModule
- * @see ff.friendService
+ * @memberOf ff.friendModule
  */
 function ffFriendController($scope, ffFriendService) {
   var vm = this; 

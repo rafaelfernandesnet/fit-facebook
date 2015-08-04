@@ -17,3 +17,5 @@ www/public/bower_components/
 www/public/compiled/
 www/public/moduleGenerator/*
 www/ff.js
+
+api/facebook.secret.ids.js

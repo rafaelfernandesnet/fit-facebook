@@ -1,15 +1,29 @@
-module.exports = {
- service: ['$http', ffFriendService],
- name: 'ffFriendService'
-}
-
+/**
+ * Responsible for friends information
+ *
+ * @ngdoc service
+ * @name ffFriendService
+ * @memberOf ff.friendModule
+ * @requires $http
+ */
 function ffFriendService($http) {
   return {
     list: list
   }
 
+  /**
+   * Retrieve the list of friends.
+   *
+   * @ngdoc method 
+   * @methodOf ff.friendModule.ffFriendService
+   * @name ff.friendModule.ffFriendService#list  
+   * @param {function} fnSuccess Executes when successfully retrieves
+   *                        the list of friends receiving the result.
+   * @param {function} fnError Executes when fail to retrieve
+   *                        the list of friends receiving the error data object from the backend.
+   */
   function list(fnSuccess, fnError){
-    return $http.get('/api/friends')
+    return $http.get('/facebook/friends')
       .success(function(data, status, headers) {
         if (fnSuccess){
           fnSuccess(data);
@@ -22,4 +36,9 @@ function ffFriendService($http) {
         console.log('ffNewsService failed to get activities');
       });
   }
+}
+
+module.exports = {
+ service: ['$http', ffFriendService],
+ name: 'ffFriendService'
 }

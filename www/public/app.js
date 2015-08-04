@@ -1,6 +1,7 @@
 /**
  * Main module, should be used in the ng-app.
- * @module FitFacebook 
+ * @ngdoc module
+ * @name FitFacebook 
  */
 var ngModule = angular.module('FitFacebook', [
     'ngAnimate', 'ngRoute', 'ngMessages',

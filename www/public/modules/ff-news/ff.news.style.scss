@@ -1,0 +1,50 @@
+
+.news-feed>div.news {
+    padding: 0.5em;
+    border: 1px solid #ddd;
+    margin-top: 1em;
+    padding-left: 1.6em;
+    padding-right: 1.6em;
+    border-radius: 20em;
+    width: 35em;
+    float: left;
+    margin-right: 5em;
+    line-height: 1.6em;
+    min-height: 4em;
+}
+.news-animated.ng-enter {
+  opacity:1;
+}
+
+.news-animated.ng-enter.ng-enter-active {
+  opacity:1;
+}
+
+.news-animated.ng-enter-stagger,
+.news-animated.ng-leave-stagger,
+.news-animated.ng-move-stagger {
+  /* 200ms will be applied between each sucessive enter operation */ 
+  -webkit-transition-delay:0.2s;
+  transition-delay:0.2s;
+}
+
+.news-animated.ng-enter,
+.news-animated.ng-leave,
+.news-animated.ng-move {
+  -webkit-transition:0.5s linear all;
+  transition:0.5s linear all;
+}
+
+.news-animated.ng-leave.ng-leave-active,
+.news-animated.ng-enter,
+.news-animated.ng-move {
+  -webkit-transition:0.5s linear all;
+  transition:0.5s linear all;
+  opacity:0;
+}
+
+.news-animated.ng-leave,
+.news-animated.ng-move.ng-move-active,
+.news-animated.ng-enter.ng-enter-active {
+  opacity:1;
+}
