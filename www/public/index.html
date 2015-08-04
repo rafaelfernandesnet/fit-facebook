@@ -11,16 +11,17 @@
     <!-- build:css css/app.min.css -->
     <link rel="stylesheet" type="text/css" href="./bower_components/bootstrap/dist/css/bootstrap.css" />
     <link rel="stylesheet" type="text/css" href="./css/spinner.css" />
+    <link rel="stylesheet" type="text/css" href="./css/animate.css">
     <link rel="stylesheet" type="text/css" href="./compiled/app.css" />
     <!-- endbuild -->
   </head>
 
-  <body>
-    <div class="login-container" ng-if="!coreVm.token"><a class="btn btn-primary" href="https://www.facebook.com/dialog/oauth?client_id=155870204744672&redirect_uri=http://localhost:8888/&expiry=86400&scope=email,user_posts,publish_actions,user_friends">login using Facebook</a></div>
-    <div id="master" ng-cloak ng-if="coreVm.token">
+  <body ng-cloak >
+    <div class="login-container" ng-if="!coreVm.token"><a class="btn btn-primary animated tada" href="https://www.facebook.com/dialog/oauth?client_id=155870204744672&redirect_uri=http://localhost:8888/&expiry=86400&scope=email,user_posts,publish_actions,user_friends,user_status,user_games_activity,user_actions.fitness">login using Facebook</a></div>
+    <div id="master" ng-if="coreVm.token">
       <div class="supper-wrapper">
         <header>
-          <div class="fb-login-button" data-max-rows="10" data-size="xlarge" data-show-faces="true" data-auto-logout-link="true"></div>
+          <div class="fb-login-button " data-max-rows="10" data-size="xlarge" data-show-faces="true" data-auto-logout-link="true"></div>
           <nav>
             <div class="container">
               <a ng-href="/#/">News</a>
@@ -28,6 +29,9 @@
             </div>
           </nav>
         </header>
+        <div id="my-name">
+          <h1 class="container animated fadeInLeft" ng-show="coreVm.userInfo" >{{coreVm.userInfo.name}}</h1>
+        </div>
         <section id="content" class="ff-core container" ng-view>
 
         </section>
@@ -51,6 +55,7 @@
     <script src="./bower_components/angular-resource/angular-resource.js"></script>
     <script src="./bower_components/underscore/underscore.js"></script>
     <script src="./bower_components/moment/moment.js"></script>
+    <script src="./bower_components/angular-moment/angular-moment.js"></script>
     <script src="./compiled/app.js"></script>
     <!-- endbuild -->
 </html>

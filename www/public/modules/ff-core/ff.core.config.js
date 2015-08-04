@@ -19,8 +19,9 @@ function config($locationProvider, $httpProvider, ffToken){
     }
 
     function formatFacebookUrl(config){
-      config.url = 'https:/graph.facebook.com/v2.4/me?access_token=' 
-        + $rootScope.token + '&' + config.url.replace('/facebook/','') 
+      var signal = config.url.indexOf('?') > 0 ? '&':'?';
+      config.url = 'https:/graph.facebook.com/v2.4/'
+        + config.url.replace('/facebook/','') + signal +'access_token='+$rootScope.token  
         + '&debug=all&format=json&method=get&pretty=0&suppress_http_code=1'
       return config;
     }

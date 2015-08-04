@@ -35,7 +35,7 @@ function ffNewsFeedController($scope, $rootScope, ffNewsService){
 
   function populateNews(result){
     debugger;
-    vm.news = result.posts.data; 
+    vm.news = result.data; 
   }
 }
 

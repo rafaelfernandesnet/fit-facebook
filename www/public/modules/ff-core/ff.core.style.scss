@@ -45,7 +45,6 @@ html{
   position: absolute;
   text-align: center;
   padding-top: 43vh;
-
   a{
     border: 1px solid $primary-color;
     padding: 1em;
@@ -81,12 +80,12 @@ h1{
   color: $primary-color;
 }
 .small.progress {
-    font-size: 6px;
-    background: none;
-    border: none;
-    box-shadow: none;
-    position: absolute;
-    top: 2em;
+  font-size: 6px;
+  background: none;
+  border: none;
+  box-shadow: none;
+  position: absolute;
+  top: 2em;
 }
 
 @media (min-width: 1281px) {
@@ -101,10 +100,22 @@ h1{
 }
 
 input[type="text"]{
-    width:22em;
-    border-radius: 2em;
+  width:22em;
+  border-radius: 2em;
 }
 input:focus[type="text"]{
-    border-color: $primary-color; 
-    box-shadow: none;
+  border-color: $primary-color; 
+  box-shadow: none;
 }
+
+div#my-name {
+  background-color: white;
+  margin: 0;
+  padding-top: 5em;
+  padding-bottom: 5em;
+  h1{
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+}
+

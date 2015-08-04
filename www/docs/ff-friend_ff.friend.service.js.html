@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: ff-news/ff.news.feed.directive.js</title>
+    <title>JSDoc: Source: ff-friend/ff.friend.service.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: ff-news/ff.news.feed.directive.js</h1>
+    <h1 class="page-title">Source: ff-friend/ff.friend.service.js</h1>
 
     
 
@@ -26,53 +26,49 @@
     <section>
         <article>
             <pre class="prettyprint source linenums"><code>/**
- * @ngdoc directive
- * @memberOf ff.newsModule
- * @name ffNewsFeed
- * @description Directive responsible to render the news feed. 
+ * Responsible for friends information
  *
- * {@link https://github.com/rafaelfernandesnet/fit-facebook/blob/master/www/public/modules/ff-news/ff.news.feed.directive.js Link to the code}
- * @example 
- * &lt;ff-news-feed> &lt;/ff-news-feed>
+ * @ngdoc service
+ * @name ffFriendService
+ * @memberOf ff.friendModule
+ * @requires $http
  */
-function ffNewsFeed() {
-    return {
-        restrict: 'E',
-        transclude: true,
-        templateUrl: './modules/ff-news/ff.news.feed.directive.tmpl.html',
-        controller: 'ffNewsFeedController as vm',
-        replace: true,
-        link: function(scope, element, attrs) {
+function ffFriendService($http) {
+  return {
+    list: list
+  }
 
+  /**
+   * Retrieve the list of friends.
+   *
+   * @ngdoc method 
+   * @methodOf ff.friendModule.ffFriendService
+   * @name ff.friendModule.ffFriendService#list  
+   * @param {function} fnSuccess Executes when successfully retrieves
+   *                        the list of friends receiving the result.
+   * @param {function} fnError Executes when fail to retrieve
+   *                        the list of friends receiving the error data object from the backend.
+   */
+  function list(fnSuccess, fnError){
+    return $http.get('/facebook/friends')
+      .success(function(data, status, headers) {
+        if (fnSuccess){
+          fnSuccess(data);
         }
-    };
-}
-
-function ffNewsFeedController($scope, $rootScope, ffNewsService){
-  var vm = this;
-  $scope.$on('authenticated', loadActivities);
-
-  if ($rootScope.token){
-    loadActivities();
-  }
-
-  function loadActivities(){
-    ffNewsService.activities(populateNews);
-  }
-
-  function populateNews(result){
-    debugger;
-    vm.news = result.data; 
+      })
+      .error(function(data, status, headers) {
+        if (fnError){
+          fnError(data);
+        }
+        console.log('ffNewsService failed to get activities');
+      });
   }
 }
 
 module.exports = {
-  directive: [ffNewsFeed],
-  name: 'ffNewsFeed',
-  controller: ['$scope', '$rootScope','ffNewsService', ffNewsFeedController],
-  controllerName: 'ffNewsFeedController'
-};
-
+ service: ['$http', ffFriendService],
+ name: 'ffFriendService'
+}
 </code></pre>
         </article>
     </section>

@@ -31,10 +31,24 @@ function ffNewsService($http, $window, ffToken) {
       });
   }
 
+  /**
+   * Retrieve the list of friends.
+   *
+   * @ngdoc method 
+   * @methodOf ff.friendModule.ffFriendService
+   * @name ff.friendModule.ffFriendService#list  
+   * @param {function} fnSuccess Executes when successfully retrieves
+   *                        the list of friends receiving the result.
+   * @param {function} fnError Executes when fail to retrieve
+   *                        the list of friends receiving the error data object from the backend.
+   * @example
+   * Other option is to use fields=posts.limit(15) as a parameter for news.
+   * but the structure changes, instead of data to get the posts, it's  data.posts
+   */
   function activities(fnSuccess, fnError) {
-    return $http.get('/facebook/fields=posts.limit(15)')
+    return $http.get('/facebook/me/feed')
       .success(function(data, status, headers) {
-        if (fnSuccess){
+        if (fnSuccess)    {
           fnSuccess(data);
         }
         // console.log('configuration loaded');	    

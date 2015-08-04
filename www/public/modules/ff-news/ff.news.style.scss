@@ -1,50 +1,59 @@
 
 .news-feed>div.news {
     padding: 0.5em;
-    border: 1px solid #ddd;
-    margin-top: 1em;
-    padding-left: 1.6em;
+    padding-top: 1.6em;
+    padding-left: 0;
     padding-right: 1.6em;
-    border-radius: 20em;
-    width: 35em;
+    padding-bottom: 1.6em;
     float: left;
-    margin-right: 5em;
-    line-height: 1.6em;
     min-height: 4em;
-}
-.news-animated.ng-enter {
-  opacity:1;
+    border-bottom: 1px solid #ddd;
 }
 
-.news-animated.ng-enter.ng-enter-active {
-  opacity:1;
+.news-animated {
+  position:relative;
 }
 
 .news-animated.ng-enter-stagger,
 .news-animated.ng-leave-stagger,
 .news-animated.ng-move-stagger {
-  /* 200ms will be applied between each sucessive enter operation */ 
-  -webkit-transition-delay:0.2s;
-  transition-delay:0.2s;
+  /* notice how we're using animation instead of transition here */ 
+  -webkit-animation-delay:0.1s;
+  animation-delay:0.1s;
+
+  /* yes we still need to do this too */
+  -webkit-animation-duration:0;
+  animation-duration:0;
 }
 
-.news-animated.ng-enter,
-.news-animated.ng-leave,
-.news-animated.ng-move {
-  -webkit-transition:0.5s linear all;
-  transition:0.5s linear all;
-}
-
-.news-animated.ng-leave.ng-leave-active,
-.news-animated.ng-enter,
-.news-animated.ng-move {
-  -webkit-transition:0.5s linear all;
-  transition:0.5s linear all;
+.news-animated.ng-move,
+.news-animated.ng-enter {
   opacity:0;
+  -webkit-animation:enter_animation 0.1s;
+  animation:enter_animation 0.1s;
 }
 
-.news-animated.ng-leave,
-.news-animated.ng-move.ng-move-active,
-.news-animated.ng-enter.ng-enter-active {
-  opacity:1;
+.news-animated.ng-leave {
+  -webkit-animation:leave_animation 0.1s;
+  animation:leave_animation 0.1s;
+}
+
+@-webkit-keyframes enter_animation {
+  from { opacity:0; }
+  to { opacity:1; }
+}
+
+@keyframes enter_animation {
+  from { opacity:0; }
+  to { opacity:1; }
+}
+
+@-webkit-keyframes leave_animation {
+  from { opacity:1; }
+  to { opacity:0; }
+}
+
+@keyframes leave_animation {
+  from { opacity:1; }
+  to { opacity:0; }
 }

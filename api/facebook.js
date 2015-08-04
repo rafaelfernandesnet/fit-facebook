@@ -1,4 +1,4 @@
-var secret = require('facebook.secret.ids');
+var secret = require('./facebook.secret.ids');
 // create the file api/facebook.secret.ids.js
 // module.exports = {
 //     clientId:'????',

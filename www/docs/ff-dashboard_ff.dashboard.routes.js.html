@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: ff-news/ff.news.feed.directive.js</title>
+    <title>JSDoc: Source: ff-dashboard/ff.dashboard.routes.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: ff-news/ff.news.feed.directive.js</h1>
+    <h1 class="page-title">Source: ff-dashboard/ff.dashboard.routes.js</h1>
 
     
 
@@ -26,53 +26,21 @@
     <section>
         <article>
             <pre class="prettyprint source linenums"><code>/**
- * @ngdoc directive
- * @memberOf ff.newsModule
- * @name ffNewsFeed
- * @description Directive responsible to render the news feed. 
+ * Routes for the dashboard 
  *
- * {@link https://github.com/rafaelfernandesnet/fit-facebook/blob/master/www/public/modules/ff-news/ff.news.feed.directive.js Link to the code}
- * @example 
- * &lt;ff-news-feed> &lt;/ff-news-feed>
+ * @class ffDashboardRoutes
+ * @memberOf ff.dashboardModule
+ * @example
+ * // url = 'http://mywebsite.com/#/'
+ * // should load the dashboard controller and template
+ *
  */
-function ffNewsFeed() {
-    return {
-        restrict: 'E',
-        transclude: true,
-        templateUrl: './modules/ff-news/ff.news.feed.directive.tmpl.html',
-        controller: 'ffNewsFeedController as vm',
-        replace: true,
-        link: function(scope, element, attrs) {
-
-        }
-    };
-}
-
-function ffNewsFeedController($scope, $rootScope, ffNewsService){
-  var vm = this;
-  $scope.$on('authenticated', loadActivities);
-
-  if ($rootScope.token){
-    loadActivities();
-  }
-
-  function loadActivities(){
-    ffNewsService.activities(populateNews);
-  }
-
-  function populateNews(result){
-    debugger;
-    vm.news = result.data; 
-  }
-}
-
-module.exports = {
-  directive: [ffNewsFeed],
-  name: 'ffNewsFeed',
-  controller: ['$scope', '$rootScope','ffNewsService', ffNewsFeedController],
-  controllerName: 'ffNewsFeedController'
-};
-
+module.exports = ['$routeProvider', function($routeProvider) {
+  $routeProvider.when('/', {
+    controller : 'ffDashboardController as vm',
+    templateUrl : './modules/ff-dashboard/ff.dashboard.tmpl.html'
+  });
+}]
 </code></pre>
         </article>
     </section>

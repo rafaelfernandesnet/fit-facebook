@@ -1,4 +1,5 @@
-module.exports = ['$scope', '$location', 'ffToken', '$window', '$rootScope', '$http', ffCoreController] 
+module.exports = ['$scope', '$location', 'ffToken', '$window', '$rootScope', '$http', 'ffCoreService', ffCoreController] 
+
 
 /**
  * Represents the core controller, wrapping the 
@@ -8,12 +9,21 @@ module.exports = ['$scope', '$location', 'ffToken', '$window', '$rootScope', '$h
  * @name ffCoreController
  * @see ff.coreModule
  */
-function ffCoreController($scope, $location, ffToken, $window, $rootScope, $http) {
+function ffCoreController($scope, $location, ffToken, $window, $rootScope, $http, ffCoreService) {
   var vm = this; 
   var code;
+  debugger;
+  vm.formatDate = formatDate;
+ 
+  ffCoreService.clearAll();
   loadToken();
   clearUrl();
 
+  function formatDate(date){
+    var dateOut = new Date(date);
+    return dateOut;
+  };
+  
   function loadToken(){
     if(!$window.location.search) return;
     
@@ -25,10 +35,19 @@ function ffCoreController($scope, $location, ffToken, $window, $rootScope, $http
 
   function getToken(data){
     vm.token = $rootScope.token = data.access_token;
+    loadUserInfo();
   }
   
   function failToGetToken(error){
     vm.errorMessage = error;
+  }
+
+  function loadUserInfo(){
+    ffCoreService.getUserInfo(updateUserInfo);
+  }
+
+  function updateUserInfo(userInfo){
+    vm.userInfo = userInfo;
   }
 
   function clearUrl(){

@@ -25,18 +25,69 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>module.exports = ['$scope', ffCoreController] 
+            <pre class="prettyprint source linenums"><code>module.exports = ['$scope', '$location', 'ffToken', '$window', '$rootScope', '$http', 'ffCoreService', ffCoreController] 
+
 
 /**
  * Represents the core controller, wrapping the 
  * whole app to assist with common features. 
  *
- * @class ffCoreController
- * @namespace ff.coreModule
+ * @ngdoc directive
+ * @name ffCoreController
  * @see ff.coreModule
  */
-function ffCoreController($scope) {
+function ffCoreController($scope, $location, ffToken, $window, $rootScope, $http, ffCoreService) {
   var vm = this; 
+  var code;
+  debugger;
+  vm.formatDate = formatDate;
+ 
+  ffCoreService.clearAll();
+  loadToken();
+  clearUrl();
+
+  function formatDate(date){
+    var dateOut = new Date(date);
+    return dateOut;
+  };
+  
+  function loadToken(){
+    if(!$window.location.search) return;
+    
+    code = getParameterByName('code');
+    $http.get('/authorize/?code='+ code)
+         .success(getToken)
+         .error(failToGetToken);
+  }
+
+  function getToken(data){
+    vm.token = $rootScope.token = data.access_token;
+    loadUserInfo();
+  }
+  
+  function failToGetToken(error){
+    vm.errorMessage = error;
+  }
+
+  function loadUserInfo(){
+    ffCoreService.getUserInfo(updateUserInfo);
+  }
+
+  function updateUserInfo(userInfo){
+    vm.userInfo = userInfo;
+  }
+
+  function clearUrl(){
+    history.pushState("", document.title, $window.location.pathname);
+    //$window.location.href = '/#/';
+  }
+
+  function getParameterByName(name) {
+    name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+    var regex = new RegExp("[\\?&amp;]" + name + "=([^&amp;#]*)"),
+    results = regex.exec($window.location.search);
+    return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+  }
 }
 </code></pre>
         </article>
@@ -48,7 +99,7 @@ function ffCoreController($scope) {
 </div>
 
 <nav>
-    <h2><a href="index.html">Index</a></h2><h3>Modules</h3><ul><li><a href="ff.module_coreModule.html">coreModule</a></li><li><a href="ff.module_dashboardModule.html">dashboardModule</a></li><li><a href="ff.module_friendModule.html">friendModule</a></li><li><a href="ff.module_newsModule.html">newsModule</a></li></ul><h3>class</h3><ul><li><a href="ffCoreController.html">ffCoreController</a></li><li><a href="ffFriendController.html">ffFriendController</a></li></ul><h3>Namespaces</h3><ul><li><a href="ff.coreModule.html">ff.coreModule</a></li></ul><h3>Global</h3><ul><li><a href="global.html#ffNewsFeed">ffNewsFeed</a></li><li><a href="global.html#ffNewsService">ffNewsService</a></li></ul>
+    <h2><a href="index.html">Index</a></h2><h3>module</h3><ul><li><a href="ff.coreModule.html">coreModule</a></li><li><a href="ff.dashboardModule.html">dashboardModule</a></li><li><a href="ff.friendModule.html">friendModule</a></li><li><a href="ff.newsModule.html">newsModule</a></li></ul><h3>class</h3><ul><li><a href="ff.dashboardModule.ffDashboardController.html">ffDashboardController</a></li><li><a href="ff.dashboardModule.ffDashboardRoutes.html">ffDashboardRoutes</a></li><li><a href="ff.dashboardModule.ffFriendRoutes.html">ffFriendRoutes</a></li><li><a href="ff.friendModule.ffFriendController.html">ffFriendController</a></li></ul><h3>service</h3><ul><li><a href="ff.friendModule.ffFriendService.html">ffFriendService</a></li></ul><h3>directive</h3><ul><li><a href="ff.newsModule.ffNewsFeed.html">ffNewsFeed</a></li><li><a href="ffCoreController.html">ffCoreController</a></li></ul><h3>Global</h3><ul><li><a href="global.html#ffNewsService">ffNewsService</a></li></ul>
 </nav>
 
 <br clear="both">

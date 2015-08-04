@@ -1,8 +1,13 @@
 <div class="news-feed">
-  <p>News feed</p>
+  <h3>News feed</h3>
 <input type="text" ng-model="vm.newsFilter" placeholder="filter the news" class="form-control">
   <div ng-if="!vm.news" class="small progress"><div>Loading…</div></div>
-  <div ng-show="vm.news" ng-if="post.story || post.message" class="news news-animated." ng-repeat="post in vm.news | filter:vm.newsFilter">
-    {{post.story || post.message }}
+  <div ng-show="vm.news" class="news col-xs-12 news-animated" ng-repeat="post in vm.news | filter:vm.newsFilter">
+    <p ng-if="post.story">{{post.story}}</p>
+    <p ng-if="post.message">{{post.message}}</p>
+    <small>
+      {{post.created_time | amDateFormat:'dddd, MMMM Do YYYY, h:mm:ss a'}}, <span am-time-ago="post.created_time"></span>
+    </small>
+
   </div>
 </div>
