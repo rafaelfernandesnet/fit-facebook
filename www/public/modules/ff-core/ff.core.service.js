@@ -1,9 +1,4 @@
-module.exports = {
-  service: ['$http', ffCoreService],
-  name: 'ffCoreService'
-}
-
-function ffCoreService($http){
+function ffCoreService($http, $rootScope){
   var _userInfo;
   return {
     getUserInfo: getUserInfo,
@@ -17,7 +12,7 @@ function ffCoreService($http){
   function loadUserInfo(fn){
     $http.get('/facebook/me')
       .success(function(result){
-        _userInfo = result; 
+        _userInfo = $rootScope.userInfo = result; 
         fn(_userInfo);
       })
       .error(function(error){
@@ -32,4 +27,9 @@ function ffCoreService($http){
       fn(_userInfo);
     }
   }
+}
+
+module.exports = {
+  service: ['$http', '$rootScope', ffCoreService],
+  name: 'ffCoreService'
 }

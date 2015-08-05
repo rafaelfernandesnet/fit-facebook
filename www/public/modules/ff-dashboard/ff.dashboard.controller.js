@@ -1,5 +1,3 @@
-module.exports = ['$scope', ffDashboardController] 
-
 /**
  * Controlls the main dashboard area.
  *
@@ -9,3 +7,5 @@ module.exports = ['$scope', ffDashboardController]
 function ffDashboardController($scope) {
   var vm = this; 
 }
+
+module.exports = ['$scope', ffDashboardController] 

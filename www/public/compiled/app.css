@@ -87,12 +87,27 @@ h1 {
     right: 3em; } }
 
 input[type="text"] {
-  width: 22em;
-  border-radius: 2em; }
+  max-width: 22em; }
 
 input:focus[type="text"] {
   border-color: #337ab7;
   box-shadow: none; }
+
+input[type="text"].search {
+  width: 10em;
+  border-radius: 2em;
+  padding-left: 2.2em;
+  -webkit-transition: width 0.3s ease-in-out;
+  -moz-transition: width 0.3s ease-in-out;
+  -o-transition: width 0.3s ease-in-out;
+  transition: width 0.3s ease-in-out; }
+
+input:focus[type="text"].search {
+  width: 22em;
+  -webkit-transition: width 0.3s ease-in-out;
+  -moz-transition: width 0.3s ease-in-out;
+  -o-transition: width 0.3s ease-in-out;
+  transition: width 0.3s ease-in-out; }
 
 div#my-name {
   background-color: white;
@@ -106,7 +121,30 @@ div#my-name {
 .fb-login-button {
   float: right; }
 
-.news-feed > div.news {
+i.glyphicon.glyphicon-search.inner-icon {
+  position: absolute;
+  top: auto;
+  padding-top: 0.7em;
+  padding-left: 0.8em; }
+
+.clear {
+  clear: both; }
+
+.ff-friend section h4 {
+  font-size: 18px;
+  border: 1px solid #337ab7;
+  padding: 1em;
+  width: auto;
+  float: left;
+  margin: 1em;
+  border-radius: 0.4em;
+  color: #337ab7;
+  background-color: #fff; }
+
+.ff-friend section > div {
+  clear: both; }
+
+.news-feed > .news {
   padding: 0.5em;
   padding-top: 1.6em;
   padding-left: 0;
@@ -115,6 +153,8 @@ div#my-name {
   float: left;
   min-height: 4em;
   border-bottom: 1px solid #ddd; }
+  .news-feed > .news small {
+    color: #999; }
 
 .news-animated {
   position: relative; }
@@ -122,10 +162,8 @@ div#my-name {
 .news-animated.ng-enter-stagger,
 .news-animated.ng-leave-stagger,
 .news-animated.ng-move-stagger {
-  /* notice how we're using animation instead of transition here */
   -webkit-animation-delay: 0.1s;
   animation-delay: 0.1s;
-  /* yes we still need to do this too */
   -webkit-animation-duration: 0;
   animation-duration: 0; }
 
@@ -136,8 +174,8 @@ div#my-name {
   animation: enter_animation 0.1s; }
 
 .news-animated.ng-leave {
-  -webkit-animation: leave_animation 0.1s;
-  animation: leave_animation 0.1s; }
+  -webkit-animation: leave_animation 0s;
+  animation: leave_animation 0s; }
 
 @-webkit-keyframes enter_animation {
   from {
@@ -162,3 +200,14 @@ div#my-name {
     opacity: 1; }
   to {
     opacity: 0; } }
+
+input.hidden-input {
+  width: 0;
+  height: 0;
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  top: -9999px; }
+
+section#post {
+  margin-top: 2em; }

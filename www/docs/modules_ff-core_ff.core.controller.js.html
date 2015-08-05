@@ -25,23 +25,21 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>module.exports = ['$scope', '$location', 'ffToken', '$window', '$rootScope', '$http', 'ffCoreService', ffCoreController] 
-
-
-/**
+            <pre class="prettyprint source linenums"><code>/**
  * Represents the core controller, wrapping the 
  * whole app to assist with common features. 
  *
- * @ngdoc directive
+ * @ngdoc class
  * @name ffCoreController
- * @see ff.coreModule
+ * @memberOf ff.coreModule
  */
 function ffCoreController($scope, $location, ffToken, $window, $rootScope, $http, ffCoreService) {
   var vm = this; 
   var code;
-  debugger;
   vm.formatDate = formatDate;
- 
+  vm.facebookUrl = 'https://www.facebook.com/dialog/oauth?client_id=155870204744672&amp;redirect_uri=http://localhost:8888/&amp;expiry=86400&amp;scope=email,user_posts,publish_actions,user_friends,user_status,user_games_activity,user_actions.fitness'
+  vm.headerUrl = './modules/ff-core/ff.core.header.tmpl.html';
+  vm.footerUrl = './modules/ff-core/ff.core.footer.tmpl.html';
   ffCoreService.clearAll();
   loadToken();
   clearUrl();
@@ -89,6 +87,9 @@ function ffCoreController($scope, $location, ffToken, $window, $rootScope, $http
     return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
   }
 }
+
+
+module.exports = ['$scope', '$location', 'ffToken', '$window', '$rootScope', '$http', 'ffCoreService', ffCoreController] 
 </code></pre>
         </article>
     </section>
@@ -99,7 +100,7 @@ function ffCoreController($scope, $location, ffToken, $window, $rootScope, $http
 </div>
 
 <nav>
-    <h2><a href="index.html">Index</a></h2><h3>module</h3><ul><li><a href="ff.coreModule.html">coreModule</a></li><li><a href="ff.dashboardModule.html">dashboardModule</a></li><li><a href="ff.friendModule.html">friendModule</a></li><li><a href="ff.newsModule.html">newsModule</a></li><li><a href="FitFacebook.html">FitFacebook</a></li></ul><h3>class</h3><ul><li><a href="ff.dashboardModule.ffDashboardController.html">ffDashboardController</a></li><li><a href="ff.dashboardModule.ffDashboardRoutes.html">ffDashboardRoutes</a></li><li><a href="ff.dashboardModule.ffFriendRoutes.html">ffFriendRoutes</a></li><li><a href="ff.friendModule.ffFriendController.html">ffFriendController</a></li></ul><h3>service</h3><ul><li><a href="ff.friendModule.ffFriendService.html">ffFriendService</a></li></ul><h3>directive</h3><ul><li><a href="ff.newsModule.ffNewsFeed.html">ffNewsFeed</a></li><li><a href="ffCoreController.html">ffCoreController</a></li></ul><h3>Global</h3><ul><li><a href="global.html#ffNewsService">ffNewsService</a></li></ul>
+    <h2><a href="index.html">Index</a></h2><h3>module</h3><ul><li><a href="ff.coreModule.html">coreModule</a></li><li><a href="ff.dashboardModule.html">dashboardModule</a></li><li><a href="ff.friendModule.html">friendModule</a></li><li><a href="ff.newsModule.html">newsModule</a></li><li><a href="FitFacebook.html">FitFacebook</a></li></ul><h3>class</h3><ul><li><a href="ff.coreModule.ffCoreController.html">ffCoreController</a></li><li><a href="ff.dashboardModule.ffDashboardController.html">ffDashboardController</a></li><li><a href="ff.dashboardModule.ffDashboardRoutes.html">ffDashboardRoutes</a></li><li><a href="ff.dashboardModule.ffFriendRoutes.html">ffFriendRoutes</a></li><li><a href="ff.friendModule.ffFriendController.html">ffFriendController</a></li><li><a href="ff.newsModule.ffNewsFeedController.html">ffNewsFeedController</a></li><li><a href="ff.newsModule.ffNewsPostController.html">ffNewsPostController</a></li></ul><h3>service</h3><ul><li><a href="ff.friendModule.ffFriendService.html">ffFriendService</a></li><li><a href="ff.newsModule.ffNewsService.html">ffNewsService</a></li></ul><h3>directive</h3><ul><li><a href="ff.newsModule.ffNewsFeed.html">ffNewsFeed</a></li><li><a href="ff.newsModule.ffNewsPost.html">ffNewsPost</a></li></ul>
 </nav>
 
 <br clear="both">

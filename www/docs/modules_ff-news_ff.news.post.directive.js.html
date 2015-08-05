@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: app.js</title>
+    <title>JSDoc: Source: modules/ff-news/ff.news.post.directive.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: app.js</h1>
+    <h1 class="page-title">Source: modules/ff-news/ff.news.post.directive.js</h1>
 
     
 
@@ -26,33 +26,54 @@
     <section>
         <article>
             <pre class="prettyprint source linenums"><code>/**
- * Main module, should be used in the ng-app.
- * @ngdoc module
- * @name FitFacebook 
+ * @ngdoc directive
+ * @memberOf ff.newsModule
+ * @name ffNewsPost
+ * @description Directive responsible to post new status. 
+ * @example
+ * &lt;ff-news-post> &lt;/ff-news-post>
  */
-var ngModule = angular.module('FitFacebook', [
-    'ngAnimate', 'ngRoute', 'ngMessages',
-    'ngCookies', 'ngSanitize', 
-    'ngResource', 'underscore',
-    'angularMoment',
-    
-   'ff.dashboardModule',
-   'ff.newsModule',
-   'ff.friendModule',
-   'ff.coreModule'
-])
+function ffNewsPost() {
+    return {
+        restrict: 'E',
+        transclude: true,
+        templateUrl: './modules/ff-news/ff.news.post.directive.tmpl.html',
+        controller: 'ffNewsPostController as vm',
+        replace: true,
+        link: function(scope, element, attrs) {
 
+        }
+    };
+}
 
-require('./components/ng-underscore/ng-underscore.js');
 /**
- * INJECT the module in the FitFacebook Module, AS IT IS ABOVE.
- * LOAD the module, SO IT IS BELLOW.
+ * @ngdoc class
+ * @memberOf ff.newsModule
+ * @name ffNewsPostController
+ * @description Controller responsible for the news post.
  */
+function ffNewsPostController($scope, $rootScope, ffNewsService){
+  var vm = this;
 
-require('./modules/ff-core/ff.core.app.js');
-require('./modules/ff-friend/ff.friend.app.js');
-require('./modules/ff-news/ff.news.app.js');
-require('./modules/ff-dashboard/ff.dashboard.app.js');
+  vm.post = post;
+
+  function post(){
+    debugger;
+    ffNewsService.post(vm.message, updateContent);  
+  }
+
+  function updateContent(){
+    $rootScope.$broadcast('contentUpdated')
+  }
+}
+
+module.exports = {
+  directive: [ffNewsPost],
+  name: 'ffNewsPost',
+  controller: ['$scope', '$rootScope','ffNewsService', ffNewsPostController],
+  controllerName: 'ffNewsPostController'
+};
+
 </code></pre>
         </article>
     </section>

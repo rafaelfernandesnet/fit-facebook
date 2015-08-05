@@ -1,22 +1,33 @@
 /**
- * Service responsible for news
+ * Responsible for managing the news 
  *
- * @see ff.newsModule
- * @date: 2015/08/01
- * @example: 
- * <ff-news-feed> </ff-news-feed>
- * // returns the whole news feed.
- *
+ * @ngdoc service
+ * @name ffNewsService
+ * @memberOf ff.newsModule
+ * @requires $http, $windows, $rootScope
  */
-function ffNewsService($http, $window, ffToken) {
+function ffNewsService($http, $window, $rootScope) {
 
   return {
     post: post,
     activities: activities
   };
 
-  function post(fnSuccess, fnError) {
-    return $http.get('/api/activities')
+
+  /**
+   * Post a new status.
+   *
+   * @ngdoc method 
+   * @methodOf ff.newsModule.post
+   * @name ff.newsModule.ffNewsService#post  
+   * @param {String}   message New status information. 
+   * @param {function} fnSuccess Executes when successfully
+   *                        post a new status.
+   * @param {function} fnError Executes when fail to 
+   *                        a new status.
+   */
+  function post(message, fnSuccess, fnError) {
+    return $http.post('/facebook/me/feed', {message: message})
       .success(function(data, status, headers) {
         if (fnSuccess){
           fnSuccess(data);
@@ -32,15 +43,15 @@ function ffNewsService($http, $window, ffToken) {
   }
 
   /**
-   * Retrieve the list of friends.
+   * Retrieve the news feed.
    *
    * @ngdoc method 
-   * @methodOf ff.friendModule.ffFriendService
-   * @name ff.friendModule.ffFriendService#list  
+   * @methodOf ff.newsModule.activities
+   * @name ff.newsModule.ffNewsService#activities  
    * @param {function} fnSuccess Executes when successfully retrieves
-   *                        the list of friends receiving the result.
+   *                        the news feed.
    * @param {function} fnError Executes when fail to retrieve
-   *                        the list of friends receiving the error data object from the backend.
+   *                        the news feed.
    * @example
    * Other option is to use fields=posts.limit(15) as a parameter for news.
    * but the structure changes, instead of data to get the posts, it's  data.posts
@@ -57,10 +68,10 @@ function ffNewsService($http, $window, ffToken) {
         if (fnError){
           fnError(data);
         }
-        console.log('ffNewsService failed to get activities');
+        console.log('ffNewsService failed to get news');
       });
   }
 }
 
-module.exports = ['$http', '$window', ffNewsService];
+module.exports = ['$http', '$window', '$rootScope', ffNewsService];
 

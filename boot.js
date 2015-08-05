@@ -10,15 +10,7 @@ var app = express();
 app.use(bodyParser.json()); // to support JSON-encoded bodies
 var logedInUsers = [];
 
-_.each(apiList, function(apiItem){
-    if (apiItem.apiType === 'put'){
-        app.put(apiItem.path, apiItem.fn);
-    } if (apiItem.apiType === 'get'){
-        app.get(apiItem.path, apiItem.fn);
-    } else {
-        app.post(apiItem.path, apiItem.fn);
-    }
-});
+loadAllApis();
 
 var wwwDir = production ? '/www/dist/fit-facebook' : '/www/public';
 
@@ -26,3 +18,9 @@ var www = express.static(__dirname + wwwDir);
 app.use('/', www);
 
 app.listen(8888);
+
+function loadAllApis(){
+  _.each(apiList, function(apiItem){
+    app[apiItem.apiType](apiItem.path, apiItem.fn);
+  });
+}

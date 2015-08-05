@@ -6,7 +6,7 @@
  * @memberOf ff.friendModule
  * @requires $http
  */
-function ffFriendService($http) {
+function ffFriendService($http, $rootScope) {
   return {
     list: list
   }
@@ -23,7 +23,7 @@ function ffFriendService($http) {
    *                        the list of friends receiving the error data object from the backend.
    */
   function list(fnSuccess, fnError){
-    return $http.get('/facebook/friends')
+    return $http.get('/facebook/' + $rootScope.userInfo.id + '/friends')
       .success(function(data, status, headers) {
         if (fnSuccess){
           fnSuccess(data);
@@ -39,6 +39,6 @@ function ffFriendService($http) {
 }
 
 module.exports = {
- service: ['$http', ffFriendService],
+ service: ['$http','$rootScope', ffFriendService],
  name: 'ffFriendService'
 }

@@ -22,14 +22,12 @@
     </div>
     <div id="master" ng-if="coreVm.token">
       <div class="supper-wrapper">
-        <header ng-include="'./modules/ff-core/ff.core.header.tmpl.html'"></header>
-        <div id="my-name">
-          <h1 class="container animated fadeInLeft" ng-show="coreVm.userInfo" >{{coreVm.userInfo.name}}</h1>
-        </div>
-        <section id="content" class="ff-core container" ng-view>
-
-        </section>
-        <footer ng-include="'./modules/ff-core/ff.core.footer.tmpl.html'"></footer>
+        <header ng-include="coreVm.headerUrl"></header>
+        <div id="my-name"><h1 class="container animated fadeInLeft">{{coreVm.userInfo.name}}</h1></div>
+        <!--Main content - views display - start -->
+        <section id="content" class="ff-core container" ng-view></section>
+        <!--Main content - views display - end -->
+        <footer ng-include="coreVm.footerUrl"></footer>
       </div>
     </div>
     <!-- build:js js/app.min.js -->

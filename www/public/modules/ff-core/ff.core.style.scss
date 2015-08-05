@@ -100,12 +100,28 @@ h1{
 }
 
 input[type="text"]{
-  width:22em;
-  border-radius: 2em;
+  max-width:22em;
 }
 input:focus[type="text"]{
   border-color: $primary-color; 
   box-shadow: none;
+}
+input[type="text"].search{
+  width:10em;
+  border-radius: 2em;
+  padding-left: 2.2em;
+  -webkit-transition: width 0.3s ease-in-out;
+  -moz-transition: width 0.3s ease-in-out;
+  -o-transition: width 0.3s ease-in-out;
+  transition: width 0.3s ease-in-out;
+}
+
+input:focus[type="text"].search{
+  width:22em;
+  -webkit-transition: width 0.3s ease-in-out;
+  -moz-transition: width 0.3s ease-in-out;
+  -o-transition: width 0.3s ease-in-out;
+  transition: width 0.3s ease-in-out;
 }
 
 div#my-name {
@@ -121,4 +137,13 @@ div#my-name {
 
 .fb-login-button{
   float:right;
+}
+i.glyphicon.glyphicon-search.inner-icon {
+    position: absolute;
+    top: auto;
+    padding-top: 0.7em;
+    padding-left: 0.8em;
+}
+.clear{
+  clear:both;
 }

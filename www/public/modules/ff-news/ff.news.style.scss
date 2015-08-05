@@ -1,5 +1,5 @@
 
-.news-feed>div.news {
+.news-feed>.news {
     padding: 0.5em;
     padding-top: 1.6em;
     padding-left: 0;
@@ -8,6 +8,9 @@
     float: left;
     min-height: 4em;
     border-bottom: 1px solid #ddd;
+    small{
+      color: $midtone-text;
+    }
 }
 
 .news-animated {
@@ -17,11 +20,9 @@
 .news-animated.ng-enter-stagger,
 .news-animated.ng-leave-stagger,
 .news-animated.ng-move-stagger {
-  /* notice how we're using animation instead of transition here */ 
   -webkit-animation-delay:0.1s;
   animation-delay:0.1s;
 
-  /* yes we still need to do this too */
   -webkit-animation-duration:0;
   animation-duration:0;
 }
@@ -34,8 +35,8 @@
 }
 
 .news-animated.ng-leave {
-  -webkit-animation:leave_animation 0.1s;
-  animation:leave_animation 0.1s;
+  -webkit-animation:leave_animation 0s;
+  animation:leave_animation 0s;
 }
 
 @-webkit-keyframes enter_animation {
@@ -56,4 +57,15 @@
 @keyframes leave_animation {
   from { opacity:1; }
   to { opacity:0; }
+}
+input.hidden-input {
+    width: 0;
+    height: 0;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    top: -9999px;
+}
+section#post {
+    margin-top: 2em;
 }

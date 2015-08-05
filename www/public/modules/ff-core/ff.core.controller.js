@@ -1,21 +1,18 @@
-module.exports = ['$scope', '$location', 'ffToken', '$window', '$rootScope', '$http', 'ffCoreService', ffCoreController] 
-
-
 /**
  * Represents the core controller, wrapping the 
  * whole app to assist with common features. 
  *
- * @ngdoc directive
+ * @ngdoc class
  * @name ffCoreController
- * @see ff.coreModule
+ * @memberOf ff.coreModule
  */
 function ffCoreController($scope, $location, ffToken, $window, $rootScope, $http, ffCoreService) {
   var vm = this; 
   var code;
-  debugger;
   vm.formatDate = formatDate;
   vm.facebookUrl = 'https://www.facebook.com/dialog/oauth?client_id=155870204744672&redirect_uri=http://localhost:8888/&expiry=86400&scope=email,user_posts,publish_actions,user_friends,user_status,user_games_activity,user_actions.fitness'
-
+  vm.headerUrl = './modules/ff-core/ff.core.header.tmpl.html';
+  vm.footerUrl = './modules/ff-core/ff.core.footer.tmpl.html';
   ffCoreService.clearAll();
   loadToken();
   clearUrl();
@@ -63,3 +60,6 @@ function ffCoreController($scope, $location, ffToken, $window, $rootScope, $http
     return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
   }
 }
+
+
+module.exports = ['$scope', '$location', 'ffToken', '$window', '$rootScope', '$http', 'ffCoreService', ffCoreController] 

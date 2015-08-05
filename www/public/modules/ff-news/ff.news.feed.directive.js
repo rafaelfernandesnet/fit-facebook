@@ -21,6 +21,13 @@ function ffNewsFeed() {
     };
 }
 
+
+/**
+ * @ngdoc class
+ * @memberOf ff.newsModule
+ * @name ffNewsFeedController
+ * @description Controller responsible for the news feed.
+ */
 function ffNewsFeedController($scope, $rootScope, ffNewsService){
   var vm = this;
   $scope.$on('authenticated', loadActivities);
@@ -34,7 +41,6 @@ function ffNewsFeedController($scope, $rootScope, ffNewsService){
   }
 
   function populateNews(result){
-    debugger;
     vm.news = result.data; 
   }
 }

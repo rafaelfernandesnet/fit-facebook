@@ -1,0 +1,16 @@
+.ff-friend {
+  section h4{
+    font-size: 18px;
+    border: 1px solid $primary-color;
+    padding: 1em;
+    width: auto;
+    float: left;
+    margin: 1em;
+    border-radius: 0.4em;
+    color: $primary-color;
+    background-color: $background-color;
+  }
+  section>div{
+    clear:both;
+  }
+}

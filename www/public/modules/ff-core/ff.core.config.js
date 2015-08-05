@@ -1,5 +1,3 @@
-module.exports = ['$locationProvider', '$httpProvider', 'ffToken', config];
-
 function config($locationProvider, $httpProvider, ffToken){
   $locationProvider.html5Mode(true);
   $httpProvider.interceptors.push(['$rootScope', function($rootScope) {
@@ -33,3 +31,5 @@ function config($locationProvider, $httpProvider, ffToken){
   }])
 
 }
+
+module.exports = ['$locationProvider', '$httpProvider', 'ffToken', config];
