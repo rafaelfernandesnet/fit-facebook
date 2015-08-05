@@ -49,3 +49,17 @@
 
 - `this will generate the folder with controller, service, route and app for that module.`
 - `Remember to go app.js, require the module in the file and add as a dependency.`
+
+### To link to an new application:
+- create a file named facebook.secret.ids.js with the content:
+```
+module.exports = {
+    clientId:'????',
+    clientSecret:'?????'
+}
+```
+- update the facebook url in the www/public/modules/ff-core/ff.core.controller.js with the right client_id and url.
+```
+  vm.facebookUrl = 'https://www.facebook.com/dialog/oauth?client_id=155870204744672&redirect_uri=http://localhost:8888/&expiry=86400&scope=email,user_posts,publish_actions,user_friends,user_status,user_games_activity,user_actions.fitness'
+```
+# You should be ready!
