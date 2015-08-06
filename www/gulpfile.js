@@ -104,4 +104,4 @@ function useKarma(autotest) {
 gulp.task('test', useKarma(false));
 gulp.task('autotest', useKarma(true));
 gulp.task('build', ['build:clean', 'sass:compile', 'js:compile', 'app:dist', 'doc:generate', 'app:copy-views']);
-gulp.task('dev', ['sass:compile', 'js:compile', 'doc:generate', 'sass:watch', 'js:watch']);
+gulp.task('dev', ['sass:compile', 'js:compile', 'sass:watch', 'js:watch']);
