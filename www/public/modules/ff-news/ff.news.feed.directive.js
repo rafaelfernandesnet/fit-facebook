@@ -31,6 +31,7 @@ function ffNewsFeed() {
 function ffNewsFeedController($scope, $rootScope, ffNewsService){
   var vm = this;
   $scope.$on('authenticated', loadActivities);
+  $scope.$on('contentUpdated', loadActivities);
 
   if ($rootScope.token){
     loadActivities();

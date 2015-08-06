@@ -89,6 +89,9 @@ function useKarma(autotest) {
         './public/bower_components/underscore/underscore.js',
         './public/app.js',
         './public/bower_components/angular-mocks/angular-mocks.js',
+        './public/bower_components/angular-mocks/angular-mocks.js',
+        './bower_components/moment/moment.js',
+        '/bower_components/angular-moment/angular-moment.js',
         './test/spec/**/*.js'
       ])
       .pipe(karma({

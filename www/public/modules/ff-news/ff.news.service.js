@@ -74,4 +74,3 @@ function ffNewsService($http, $window, $rootScope) {
 }
 
 module.exports = ['$http', '$window', '$rootScope', ffNewsService];
-

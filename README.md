@@ -51,15 +51,24 @@
 - `Remember to go app.js, require the module in the file and add as a dependency.`
 
 ### To link to an new application:
-- create a file named facebook.secret.ids.js with the content:
+1. create a file named facebook.secret.ids.js with the content:
 ```
 module.exports = {
     clientId:'????',
     clientSecret:'?????'
 }
 ```
-- update the facebook url in the www/public/modules/ff-core/ff.core.controller.js with the right client_id and url.
+2. update the facebook url in the www/public/modules/ff-core/ff.core.controller.js with the right client_id and url.
 ```
   vm.facebookUrl = 'https://www.facebook.com/dialog/oauth?client_id=155870204744672&redirect_uri=http://localhost:8888/&expiry=86400&scope=email,user_posts,publish_actions,user_friends,user_status,user_games_activity,user_actions.fitness'
 ```
+
+### To generate the documentation:
+1. Run `cd www\`
+2. Run `gulp docs:generate`
+- The documentation should be accessible at www/docs/index.html
+
 # You should be ready!
+
+### I hope you have fun with this prototype. Please feel free to contact me if you have any questions.
+

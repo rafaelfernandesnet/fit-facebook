@@ -81,7 +81,20 @@
 <li><p><code>this will generate the folder with controller, service, route and app for that module.</code></p>
 </li>
 <li><code>Remember to go app.js, require the module in the file and add as a dependency.</code></li>
-</ol></article>
+</ol>
+<h3>To link to an new application:</h3><ol>
+<li>create a file named facebook.secret.ids.js with the content:<pre class="prettyprint source"><code>module.exports = {
+ clientId:'????',
+ clientSecret:'?????'
+}</code></pre></li>
+<li>update the facebook url in the www/public/modules/ff-core/ff.core.controller.js with the right client_id and url.<pre class="prettyprint source"><code>vm.facebookUrl = 'https://www.facebook.com/dialog/oauth?client_id=155870204744672&redirect_uri=http://localhost:8888/&expiry=86400&scope=email,user_posts,publish_actions,user_friends,user_status,user_games_activity,user_actions.fitness'</code></pre></li>
+</ol>
+<h3>To generate the documentation:</h3><ol>
+<li>Run <code>cd www\</code></li>
+<li>Run <code>gulp docs:generate</code></li>
+<li>The documentation should be accessible at www/docs/index.html</li>
+</ol>
+<h1>You should be ready!</h1><h3>I hope you have fun with this prototype. Please feel free to contact me if you have any questions.</h3></article>
     </section>
 
 
@@ -92,7 +105,7 @@
 </div>
 
 <nav>
-    <h2><a href="index.html">Index</a></h2><h3>module</h3><ul><li><a href="ff.coreModule.html">coreModule</a></li><li><a href="ff.dashboardModule.html">dashboardModule</a></li><li><a href="ff.friendModule.html">friendModule</a></li><li><a href="ff.newsModule.html">newsModule</a></li><li><a href="FitFacebook.html">FitFacebook</a></li></ul><h3>class</h3><ul><li><a href="ff.coreModule.ffCoreController.html">ffCoreController</a></li><li><a href="ff.dashboardModule.ffDashboardController.html">ffDashboardController</a></li><li><a href="ff.dashboardModule.ffDashboardRoutes.html">ffDashboardRoutes</a></li><li><a href="ff.dashboardModule.ffFriendRoutes.html">ffFriendRoutes</a></li><li><a href="ff.friendModule.ffFriendController.html">ffFriendController</a></li><li><a href="ff.newsModule.ffNewsFeedController.html">ffNewsFeedController</a></li><li><a href="ff.newsModule.ffNewsPostController.html">ffNewsPostController</a></li></ul><h3>service</h3><ul><li><a href="ff.friendModule.ffFriendService.html">ffFriendService</a></li><li><a href="ff.newsModule.ffNewsService.html">ffNewsService</a></li></ul><h3>directive</h3><ul><li><a href="ff.newsModule.ffNewsFeed.html">ffNewsFeed</a></li><li><a href="ff.newsModule.ffNewsPost.html">ffNewsPost</a></li></ul>
+    <h2><a href="index.html">Index</a></h2><h3>module</h3><ul><li><a href="ff.coreModule.html">coreModule</a></li><li><a href="ff.dashboardModule.html">dashboardModule</a></li><li><a href="ff.friendModule.html">friendModule</a></li><li><a href="ff.newsModule.html">newsModule</a></li><li><a href="FitFacebook.html">FitFacebook</a></li></ul><h3>class</h3><ul><li><a href="ff.coreModule.ffCoreController.html">ffCoreController</a></li><li><a href="ff.dashboardModule.ffDashboardController.html">ffDashboardController</a></li><li><a href="ff.dashboardModule.ffDashboardRoutes.html">ffDashboardRoutes</a></li><li><a href="ff.dashboardModule.ffFriendRoutes.html">ffFriendRoutes</a></li><li><a href="ff.friendModule.ffFriendController.html">ffFriendController</a></li><li><a href="ff.newsModule.ffNewsFeedController.html">ffNewsFeedController</a></li><li><a href="ff.newsModule.ffNewsPostController.html">ffNewsPostController</a></li></ul><h3>service</h3><ul><li><a href="ff.coreModule.ffCoreService.html">ffCoreService</a></li><li><a href="ff.friendModule.ffFriendService.html">ffFriendService</a></li><li><a href="ff.newsModule.ffNewsService.html">ffNewsService</a></li></ul><h3>directive</h3><ul><li><a href="ff.newsModule.ffNewsFeed.html">ffNewsFeed</a></li><li><a href="ff.newsModule.ffNewsPost.html">ffNewsPost</a></li></ul>
 </nav>
 
 <br clear="both">

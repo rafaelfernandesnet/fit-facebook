@@ -27,7 +27,8 @@ module.exports = function(config) {
         './public/bower_components/angular-resource/angular-resource.js',
         './public/bower_components/angular-resource/angular-resource.js',
         './public/bower_components/underscore/underscore.js',
-
+        './public/bower_components/moment/moment.js',
+        './public/bower_components/angular-moment/angular-moment.js',
         './public/app.js',
         
         './test/spec/*.js',
