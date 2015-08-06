@@ -162,16 +162,16 @@ i.glyphicon.glyphicon-search.inner-icon {
 .news-animated.ng-enter-stagger,
 .news-animated.ng-leave-stagger,
 .news-animated.ng-move-stagger {
-  -webkit-animation-delay: 0.1s;
-  animation-delay: 0.1s;
+  -webkit-animation-delay: 0.3s;
+  animation-delay: 0.3s;
   -webkit-animation-duration: 0;
   animation-duration: 0; }
 
 .news-animated.ng-move,
 .news-animated.ng-enter {
   opacity: 0;
-  -webkit-animation: enter_animation 0.1s;
-  animation: enter_animation 0.1s; }
+  -webkit-animation: enter_animation 0.3s;
+  animation: enter_animation 0.3s; }
 
 .news-animated.ng-leave {
   -webkit-animation: leave_animation 0s;

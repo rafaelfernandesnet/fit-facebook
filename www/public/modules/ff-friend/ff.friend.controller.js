@@ -1,8 +1,10 @@
 /**
- * Controlls the main dashboard area.
+ * Controls the friends view.
  *
- * @class ffFriendController
+ * @ngdoc directive
+ * @name ff.friendModule#ffFriendController
  * @memberOf ff.friendModule
+ * @requires $scope, ffFriendService
  */
 function ffFriendController($scope, ffFriendService) {
   var vm = this; 

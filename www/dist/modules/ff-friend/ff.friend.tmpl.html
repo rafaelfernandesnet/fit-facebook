@@ -1,0 +1,10 @@
+<div class="ff-friend">
+  <h2>Friends who installed this app:</h2>
+  <section>
+    <div ng-repeat="friend in vm.friends.data">
+      <h4>{{friend.name}}</h4>
+    </div>
+  </section>
+  <div class="clear"></div>
+  <p>Total amount of frieds you have: {{vm.friends.summary.total_count}}</p>
+</div>

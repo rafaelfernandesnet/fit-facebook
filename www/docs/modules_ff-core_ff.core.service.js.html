@@ -50,14 +50,16 @@ function ffCoreService($http, $rootScope){
    *
    * @ngdoc method 
    * @methodOf ff.coreModule.ffCoreService
-   * @name ff.friendModule.ffFriendService#loadUserInfo  
+   * @name ff.coreModule.ffCoreService#loadUserInfo  
    * @param {function} fn Any function that receives the information as an argument.
    */
   function loadUserInfo(fn){
     $http.get('/facebook/me')
       .success(function(result){
         _userInfo = $rootScope.userInfo = result; 
-        fn(_userInfo);
+        if(fn){
+          fn(_userInfo);
+        }
       })
       .error(function(error){
         console.error('failed to load users information from facebook');
@@ -67,11 +69,12 @@ function ffCoreService($http, $rootScope){
 
   /**
    * Retrieve the cached information about the user.
-   * If the information is not there, go to the backend to retrieve it.
+   * If the information is not there, go to the backend to retrieve it using
+   * the method loadUserInfo()
    *
    * @ngdoc method 
    * @methodOf ff.coreModule.ffCoreService
-   * @name ff.friendModule.ffFriendService#getUserInfo  
+   * @name ff.coreModule.ffCoreService#getUserInfo  
    * @param {function} fn Any function that receives the information as an argument.
    */
   function getUserInfo(fn){
@@ -97,7 +100,7 @@ module.exports = {
 </div>
 
 <nav>
-    <h2><a href="index.html">Index</a></h2><h3>module</h3><ul><li><a href="ff.coreModule.html">coreModule</a></li><li><a href="ff.dashboardModule.html">dashboardModule</a></li><li><a href="ff.friendModule.html">friendModule</a></li><li><a href="ff.newsModule.html">newsModule</a></li><li><a href="FitFacebook.html">FitFacebook</a></li></ul><h3>class</h3><ul><li><a href="ff.coreModule.ffCoreController.html">ffCoreController</a></li><li><a href="ff.dashboardModule.ffDashboardController.html">ffDashboardController</a></li><li><a href="ff.dashboardModule.ffDashboardRoutes.html">ffDashboardRoutes</a></li><li><a href="ff.dashboardModule.ffFriendRoutes.html">ffFriendRoutes</a></li><li><a href="ff.friendModule.ffFriendController.html">ffFriendController</a></li><li><a href="ff.newsModule.ffNewsFeedController.html">ffNewsFeedController</a></li><li><a href="ff.newsModule.ffNewsPostController.html">ffNewsPostController</a></li></ul><h3>service</h3><ul><li><a href="ff.coreModule.ffCoreService.html">ffCoreService</a></li><li><a href="ff.friendModule.ffFriendService.html">ffFriendService</a></li><li><a href="ff.newsModule.ffNewsService.html">ffNewsService</a></li></ul><h3>directive</h3><ul><li><a href="ff.newsModule.ffNewsFeed.html">ffNewsFeed</a></li><li><a href="ff.newsModule.ffNewsPost.html">ffNewsPost</a></li></ul>
+    <h2><a href="index.html">Index</a></h2><h3>module</h3><ul><li><a href="ff.coreModule.html">coreModule</a></li><li><a href="ff.dashboardModule.html">dashboardModule</a></li><li><a href="ff.friendModule.html">friendModule</a></li><li><a href="ff.newsModule.html">newsModule</a></li><li><a href="FitFacebook.html">FitFacebook</a></li></ul><h3>class</h3><ul><li><a href="ff.coreModule.ffCoreController.html">ffCoreController</a></li><li><a href="ff.dashboardModule.ffDashboardController.html">ffDashboardController</a></li><li><a href="ff.newsModule_ffNewsFeedController.html">ffNewsFeedController</a></li></ul><h3>service</h3><ul><li><a href="ff.coreModule.ffCoreService.html">ffCoreService</a></li><li><a href="ff.friendModule.ffFriendService.html">ffFriendService</a></li><li><a href="ff.newsModule.ffNewsService.html">ffNewsService</a></li></ul><h3>directive</h3><ul><li><a href="ff.friendModule_ffFriendController.html">ffFriendController</a></li><li><a href="ff.newsModule.ffNewsFeed.html">ffNewsFeed</a></li><li><a href="ff.newsModule.ffNewsPost.html">ffNewsPost</a></li><li><a href="ff.newsModule_ffNewsPostController.html">ffNewsPostController</a></li></ul>
 </nav>
 
 <br clear="both">

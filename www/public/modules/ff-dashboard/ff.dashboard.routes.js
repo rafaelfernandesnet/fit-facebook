@@ -1,10 +1,10 @@
 /**
  * Routes for the dashboard 
  *
- * @class ffDashboardRoutes
- * @memberOf ff.dashboardModule
+ * @ngdoc method
+ * @name ff.dashboardModule#config
  * @example
- * // url = 'http://mywebsite.com/#/'
+ * // url = 'http://mywebsite.com/'
  * // should load the dashboard controller and template
  *
  */

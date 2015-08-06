@@ -46,8 +46,8 @@ gulp.task('app:dist', function() {
 });
 
 gulp.task('app:copy-views', function() {
-  return gulp.src('./public/views/**/*.html', {base: './public/views' })
-    .pipe(gulp.dest('./dist/views'));
+  return gulp.src('./public/modules/**/*.html')
+    .pipe(gulp.dest('dist/modules/'));
 });
 
 gulp.task('sass:watch', function() {
@@ -70,8 +70,8 @@ gulp.task('jsdoc:generate', function(){
 
 gulp.task('doc:generate', shell.task([ 
       './node_modules/jsdoc/jsdoc.js '+ 
-   '-c ./node_modules/angular-jsdoc/conf.json '+   // config file
-   '-t ./node_modules/angular-jsdoc/template '+    // template file
+   '-c ./docs-template/conf.json '+   // config file
+   '-t ./docs-template/template '+    // template file
    '-d ./docs '+                                   // output directory
    '../README.md ' +                               // to include README.md as index contents
    '-r ./public/app.js ' +                          // source code app.js

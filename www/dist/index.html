@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html ng-app="FitFacebook" ng-controller="ffCoreController as coreVm">
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Fit Facebook</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <base href="/">
+    <link rel="stylesheet" href="css/app.min-67f2020c.css"/>
+  </head>
+
+  <body ng-cloak >
+    <div class="login-container" ng-if="!coreVm.token">
+      <a class="btn btn-primary animated tada" ng-href="{{coreVm.facebookUrl}}">login using Facebook</a>
+    </div>
+    <div id="master" ng-if="coreVm.token">
+      <div class="supper-wrapper">
+        <header ng-include="coreVm.headerUrl"></header>
+        <div id="my-name"><h1 class="container animated fadeInLeft">{{coreVm.userInfo.name}}</h1></div>
+        <!--Main content - views display - start -->
+        <section id="content" class="ff-core container" ng-view></section>
+        <!--Main content - views display - end -->
+        <footer ng-include="coreVm.footerUrl"></footer>
+      </div>
+    </div>
+    <script src="js/app.min-61b901de.js"></script>
+</html>

@@ -1,8 +1,8 @@
 /**
  * Routes to go to friends 
  *
- * @class ffFriendRoutes
- * @memberOf ff.dashboardModule
+ * @ngdoc method
+ * @name ff.dashboardModule#config
  * @example
  * // url = 'http://mywebsite.com/#/friends'
  * // should load the friends controller and the template

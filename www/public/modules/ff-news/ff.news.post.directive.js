@@ -7,36 +7,43 @@
  * <ff-news-post> </ff-news-post>
  */
 function ffNewsPost() {
-    return {
-        restrict: 'E',
-        transclude: true,
-        templateUrl: './modules/ff-news/ff.news.post.directive.tmpl.html',
-        controller: 'ffNewsPostController as vm',
-        replace: true,
-        link: function(scope, element, attrs) {
+  return {
+    restrict: 'E',
+    transclude: true,
+    templateUrl: './modules/ff-news/ff.news.post.directive.tmpl.html',
+    controller: 'ffNewsPostController as vm',
+    scope: true,
+    replace: true,
+    link: function(scope, element, attrs) {
 
-        }
-    };
+    }
+  };
 }
 
 /**
- * @ngdoc class
+ * @ngdoc directive 
  * @memberOf ff.newsModule
- * @name ffNewsPostController
+ * @name ff.newsModule#ffNewsPostController
  * @description Controller responsible for the news post.
  */
 function ffNewsPostController($scope, $rootScope, ffNewsService){
   var vm = this;
-
+  vm.test = 'This directive is bound.'
   vm.post = post;
 
   function post(){
-    debugger;
-    ffNewsService.post(vm.message, updateContent);  
+    vm.waiting = true;
+    ffNewsService.post(vm.message, updateContent, failedToPost);  
+  }
+ 
+  function failedToPost(){
+    vm.waiting = false;
   }
 
   function updateContent(){
-    $rootScope.$broadcast('contentUpdated')
+    $rootScope.$broadcast('contentUpdated');
+    vm.message = '';
+    vm.waiting = false;
   }
 }
 

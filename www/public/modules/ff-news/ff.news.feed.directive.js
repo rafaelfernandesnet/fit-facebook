@@ -12,6 +12,7 @@ function ffNewsFeed() {
     return {
         restrict: 'E',
         transclude: true,
+        scope: true,
         templateUrl: './modules/ff-news/ff.news.feed.directive.tmpl.html',
         controller: 'ffNewsFeedController as vm',
         replace: true,
@@ -25,11 +26,13 @@ function ffNewsFeed() {
 /**
  * @ngdoc class
  * @memberOf ff.newsModule
- * @name ffNewsFeedController
+ * @name ff.newsModule#ffNewsFeedController
  * @description Controller responsible for the news feed.
  */
-function ffNewsFeedController($scope, $rootScope, ffNewsService){
+function ffNewsFeedController($scope, $rootScope, ffNewsService, $timeout, _){
   var vm = this;
+  var reloadNewsEvery = 10000;
+  var plainNewsInfo;
   $scope.$on('authenticated', loadActivities);
   $scope.$on('contentUpdated', loadActivities);
 
@@ -39,9 +42,18 @@ function ffNewsFeedController($scope, $rootScope, ffNewsService){
 
   function loadActivities(){
     ffNewsService.activities(populateNews);
+    autoUpdate();
+  }
+
+  function autoUpdate(){
+    $timeout(function(){
+      ffNewsService.activities(populateNews);
+      autoUpdate();
+    }, reloadNewsEvery);
   }
 
   function populateNews(result){
+    if (angular.toJson(vm.news) === angular.toJson(result.data)) return;
     vm.news = result.data; 
   }
 }
@@ -49,7 +61,7 @@ function ffNewsFeedController($scope, $rootScope, ffNewsService){
 module.exports = {
   directive: [ffNewsFeed],
   name: 'ffNewsFeed',
-  controller: ['$scope', '$rootScope','ffNewsService', ffNewsFeedController],
+  controller: ['$scope', '$rootScope','ffNewsService', '$timeout', '_', ffNewsFeedController],
   controllerName: 'ffNewsFeedController'
 };
 
