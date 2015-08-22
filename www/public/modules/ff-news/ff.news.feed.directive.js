@@ -22,7 +22,6 @@ function ffNewsFeed() {
     };
 }
 
-
 /**
  * @ngdoc class
  * @memberOf ff.newsModule

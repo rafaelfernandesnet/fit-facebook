@@ -16,7 +16,7 @@ describe('ffFriendService', function() {
   });
 
   afterEach (
-    inject(function(ffFriendService, $httpBackend) {
+    inject(function($httpBackend) {
         _$httpBackend.verifyNoOutstandingExpectation ();
         _$httpBackend.verifyNoOutstandingRequest ();
     }));
