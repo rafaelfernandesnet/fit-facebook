@@ -75,4 +75,4 @@ module.exports = {
 # To install protractor
 1. npm install -g protractor
 2. Install Java SDK. (http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
-
+`http://www.protractortest.org/#/tutorial`
