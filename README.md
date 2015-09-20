@@ -1,6 +1,6 @@
 # fit-facebook
 
-` Display an example of a small social
+` Display an example of a small social media app using angularJs, jasmine.Js and protractor.js
 
 ## Install
 
