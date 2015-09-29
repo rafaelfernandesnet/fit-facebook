@@ -15,6 +15,7 @@ var clean      = require('gulp-clean');
 var mold       = require('mold-source-map');
 var shell      = require('gulp-shell');
 var jsdoc      = require('gulp-jsdoc');
+var Dgeni      = require('dgeni');
 
 gulp.task('build:clean', function () {
     return gulp.src('dist', {read: false})
@@ -68,30 +69,34 @@ gulp.task('jsdoc:generate', function(){
         .pipe(jsdoc('./doc'))
 });
 
-gulp.task('doc:generate', shell.task([ 
-      './node_modules/jsdoc/jsdoc.js '+ 
+gulp.task('doc:generate', shell.task([
+      './node_modules/jsdoc/jsdoc.js '+
    '-c ./docs-template/conf.json '+   // config file
    '-t ./docs-template/template '+    // template file
    '-d ./docs '+                                   // output directory
    '../README.md ' +                               // to include README.md as index contents
    '-r ./public/app.js ' +                          // source code app.js
    '-r ./public/modules/**/*.js'                   // source code directory
-])); 
+]));
 
 function useKarma(autotest) {
   return function() {
     return gulp.src([
-        './public/bower_components/jquery/dist/jquery.js', 
-        './public/bower_components/angular/angular.js', 
+        './public/bower_components/jquery/dist/jquery.js',
+        './public/bower_components/bootstrap/dist/js/bootstrap.min.js',
+        './public/bower_components/angular/angular.js',
         './public/bower_components/angular-animate/angular-animate.js',
         './public/bower_components/angular-route/angular-route.js',
         './public/bower_components/angular-messages/angular-messages.js',
+        './public/bower_components/angular-mocks/angular-mocks.js',
+        './public/bower_components/angular-cookies/angular-cookies.js',
+        './public/bower_components/angular-sanitize/angular-sanitize.js',
+        './public/bower_components/angular-resource/angular-resource.js',
+        './public/bower_components/angular-resource/angular-resource.js',
         './public/bower_components/underscore/underscore.js',
+        './public/bower_components/moment/moment.js',
+        './public/bower_components/angular-moment/angular-moment.js',
         './public/app.js',
-        './public/bower_components/angular-mocks/angular-mocks.js',
-        './public/bower_components/angular-mocks/angular-mocks.js',
-        './bower_components/moment/moment.js',
-        '/bower_components/angular-moment/angular-moment.js',
         './test/spec/**/*.js'
       ])
       .pipe(karma({
@@ -100,6 +105,18 @@ function useKarma(autotest) {
       }));
   };
 }
+
+gulp.task('dgeni', function() {
+  try {
+    var dgeni = new Dgeni([require('./fit-docs-package')]);
+    return dgeni.generate();
+  } catch(x) {
+    console.log(x);
+    console.log(x.stack);
+    throw x;
+  }
+});
+
 
 gulp.task('test', useKarma(false));
 gulp.task('autotest', useKarma(true));
