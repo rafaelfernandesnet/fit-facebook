@@ -1,6 +1,6 @@
 /**
  * @ngdoc directive
- * @memberOf ff.newsModule
+ * @module ff.newsModule
  * @name ffNewsPost
  * @description Directive responsible to post new status. 
  * @example
@@ -22,8 +22,8 @@ function ffNewsPost() {
 
 /**
  * @ngdoc directive 
- * @memberOf ff.newsModule
- * @name ff.newsModule#ffNewsPostController
+ * @module ff.newsModule
+ * @name ffNewsPostController
  * @description Controller responsible for the news post.
  */
 function ffNewsPostController($scope, $rootScope, ffNewsService){

@@ -1,0 +1,31 @@
+<h1>
+  {% if doc.title %}{$ doc.title | marked $}{% else %}{$ doc.name | code $}{% endif %}
+</h1>
+
+  <h2>Installation</h2>
+  <p>Include {$ doc.packageFile | code $} in your HTML:</p>
+  <p>Add this module to your main app.</p>
+  <p>With that you&apos;re ready to use this module!</p>
+
+{$ doc.description | marked $}
+
+<div>
+  <h2>Module Components</h2>
+  {% for componentGroup in doc.componentGroups %}
+  <div>
+    <h3>{$ componentGroup.groupType | title $}</h3>
+    <table>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      {% for component in componentGroup.components %}
+      <tr>
+        <td>{$ component.id | link(component.name, component) $}</td>
+        <td>{$ component.description | firstParagraph | marked $}</td>
+      </tr>
+      {% endfor %}
+    </table>
+  </div>
+  {% endfor %}
+</div>

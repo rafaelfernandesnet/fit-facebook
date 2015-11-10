@@ -2,7 +2,8 @@ var Package = require('dgeni').Package;
 
 var jsdocPackage = require('dgeni-packages/jsdoc');
 var nunjucksPackage = require('dgeni-packages/nunjucks');
-//var examplePackage = require('dgeni-packages/examples');
+var ngdocPackage = require('dgeni-packages/ngdoc');
+var linksPackage = require('dgeni-packages/links');
 var gitPackage = require('dgeni-packages/git');
 
 var path = require('canonical-path');
@@ -11,22 +12,28 @@ var path = require('canonical-path');
 module.exports = new Package('fit-docs-package', [
   jsdocPackage,
   nunjucksPackage,
-  //examplePackage,
+  ngdocPackage,
   gitPackage])
 
+.processor(require('./processors/create_index_processor'))
+.processor(require('dgeni-packages/ngdoc/processors/memberDocs'))
+
+.config(function(debugDumpProcessor) {
+  debugDumpProcessor.$enabled = true;
+})
 
 .config(function(readFilesProcessor, writeFilesProcessor) {
   readFilesProcessor.basePath = path.resolve(__dirname,'../public');
   readFilesProcessor.sourceFiles = [
-    { include: '**/*.js', exclude: 'bower_components/**' }
+    { include: 'modules/ff-news/*.js', exclude: 'bower_components/**' }
   ];
   writeFilesProcessor.outputFolder = 'dgeni-docs';
 })
 
 .config(function(parseTagsProcessor) {
-  parseTagsProcessor.tagDefinitions.push(require('./tagdefs/ngdoc.js'));
-  parseTagsProcessor.tagDefinitions.push(require('./tagdefs/methodOf.js'));
-  parseTagsProcessor.tagDefinitions.push(require('./tagdefs/memberOf.js'));
+  // parseTagsProcessor.tagDefinitions.push(require('./tagdefs/ngdoc.js'));
+  // parseTagsProcessor.tagDefinitions.push(require('./tagdefs/methodOf.js'));
+  // parseTagsProcessor.tagDefinitions.push(require('./tagdefs/memberOf.js'));
   parseTagsProcessor.tagDefinitions.push(require('./tagdefs/example.js'));
 })
 
@@ -49,12 +56,53 @@ module.exports = new Package('fit-docs-package', [
 
 })
 
-.config(function(inlineTagProcessor) {
-  inlineTagProcessor.$enabled = false;
-});
+.config(function(inlineTagProcessor, getLinkInfo) {
+  // inlineTagProcessor.$enabled = false;
+  getLinkInfo.relativeLinks = true;
+})
 
+.config(function(computePathsProcessor) {
 
+  computePathsProcessor.pathTemplates = [];
 
+  computePathsProcessor.pathTemplates.push({
+    docTypes: ['js'],
+    pathTemplate: '${id}.html',
+    outputPathTemplate: '${path}'
+  });
+
+  computePathsProcessor.pathTemplates.push({
+    docTypes: ['module'],
+    pathTemplate: '${area}/${name}/index.html',
+    outputPathTemplate: '${path}'
+  });
+
+  computePathsProcessor.pathTemplates.push({
+    docTypes:['componentGroup'],
+    pathTemplate: '${area}/${moduleName}/${groupType}/index.html',
+    outputPathTemplate: '${path}'
+  });
+
+  computePathsProcessor.pathTemplates.push({
+    docTypes: ['controller', 'directive', 'service'],
+    pathTemplate: '${area}/${module}/${docType}/${name}.html',
+    outputPathTemplate: '${path}'
+  });
+})
+
+.config(function(computeIdsProcessor, getAliases) {
+  computeIdsProcessor.idTemplates.push({
+    docTypes: ['index'],
+    idTemplate: 'index-doc',
+    getAliases: function(doc) { return [doc.id]; }
+  });
+
+  computeIdsProcessor.idTemplates.push({
+    docTypes: ['controller'],
+    idTemplate: 'module:${module}.${docType}:${name}',
+    getAliases: getAliases
+  });
+})
 
 // .config(function(generateExamplesProcessor, generateProtractorTestsProcessor) {
 //   generateExamplesProcessor.deployments = [{ name: 'default' }];

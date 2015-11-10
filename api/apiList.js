@@ -5,7 +5,12 @@ module.exports = [{
   apiType: 'get',
   path: '/authorize',
   fn: getAuthenticationToken
-}];
+},{
+  apiType: 'post',
+  path: '/awesome',
+  fn: awesome 
+}
+];
 
 function getAuthenticationToken(req, res) {
   request(facebook.authenticate(req.query.code), 
@@ -18,3 +23,6 @@ function getAuthenticationToken(req, res) {
       });
 }
 
+function awesome(req, res) {
+  console.log(req);
+}
