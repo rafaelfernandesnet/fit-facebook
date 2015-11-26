@@ -27,50 +27,20 @@
 <body>
 	
 <h1>
-  <code>ff.newsModule</code>
+  <code>ff.coreModule</code>
 </h1>
 
   <h2>Installation</h2>
-  <p>Include <code>./modules/ff-news/ff.news.app.js</code> in your HTML:</p>
+  <p>Include <code>./modules/ff-core/ff.core.app.js</code> in your HTML:</p>
   <p>Add this module to your main app.</p>
   <p>With that you&apos;re ready to use this module!</p>
 
-<p>Responsible for news content</p>
+<p>Represents the core module responsible
+for the workflow of the app.</p>
 
 
 <div>
   <h2>Module Components</h2>
-  
-  <div>
-    <h3>Directive</h3>
-    <table>
-      <tr>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-      
-      <tr>
-        <td><a href="directive/ffNewsFeed.html">ffNewsFeed</a></td>
-        <td><p>Directive responsible to render the news feed. 
-Link to my module : <a href="index.html"><code>ff.newsModule</code></a>
-<a href="https://github.com/rafaelfernandesnet/fit-facebook/blob/master/www/public/modules/ff-news/ff.news.feed.directive.js">Link to the code</a></p>
-</td>
-      </tr>
-      
-      <tr>
-        <td><a href="directive/ffNewsPost.html">ffNewsPost</a></td>
-        <td><p>Directive responsible to post new status.</p>
-</td>
-      </tr>
-      
-      <tr>
-        <td><a href="directive/ffNewsPostController.html">ffNewsPostController</a></td>
-        <td><p>Controller responsible for the news post.</p>
-</td>
-      </tr>
-      
-    </table>
-  </div>
   
   <div>
     <h3>Controller</h3>
@@ -81,8 +51,9 @@ Link to my module : <a href="index.html"><code>ff.newsModule</code></a>
       </tr>
       
       <tr>
-        <td><a href="controller/ffNewsFeedController.html">ffNewsFeedController</a></td>
-        <td><p>Controller responsible for the news feed.</p>
+        <td><a href="controller/ffCoreController.html">ffCoreController</a></td>
+        <td><p>Represents the core controller, wrapping the 
+whole app to assist with common features. </p>
 </td>
       </tr>
       
@@ -98,8 +69,8 @@ Link to my module : <a href="index.html"><code>ff.newsModule</code></a>
       </tr>
       
       <tr>
-        <td><a href="service/ffNewsService.html">ffNewsService</a></td>
-        <td><p>Responsible for managing the news </p>
+        <td><a href="service/ffCoreService.html">ffCoreService</a></td>
+        <td><p>Responsible for friends information</p>
 </td>
       </tr>
       

@@ -27,14 +27,14 @@
 <body>
 	
 
-<h1>ffNewsService</h1>
-<p>Responsible for managing the news </p>
+<h1>ffCoreService</h1>
+<p>Responsible for friends information</p>
 
 
 
 <h2>Methods</h2>
 
-<h3> post(message, fnSuccess, fnError, )</h3>
+<h3> loadUserInfo(fn, )</h3>
 
 <table class="variables-matrix input-arguments">
   <thead>
@@ -48,23 +48,7 @@
     
     <tr>
       <td>
-        message
-        
-        
-      </td>
-      <td>
-        <a href="" class="label type-hint type-hint-string">String</a>
-      </td>
-      <td>
-        <p>New status information.</p>
-
-        
-      </td>
-    </tr>
-    
-    <tr>
-      <td>
-        fnSuccess
+        fn
         
         
       </td>
@@ -72,25 +56,7 @@
         <a href="" class="label type-hint type-hint-function">function</a>
       </td>
       <td>
-        <p>Executes when successfully
-                       post a new status.</p>
-
-        
-      </td>
-    </tr>
-    
-    <tr>
-      <td>
-        fnError
-        
-        
-      </td>
-      <td>
-        <a href="" class="label type-hint type-hint-function">function</a>
-      </td>
-      <td>
-        <p>Executes when fail to 
-                       a new status.</p>
+        <p>Any function that receives the information as an argument.</p>
 
         
       </td>
@@ -99,10 +65,10 @@
   </tbody>
 </table>
 
-<p>Post a new status.</p>
+<p>Retrieve the information about the user.</p>
 
 
-<h3> activities(fnSuccess, fnError, )</h3>
+<h3> getUserInfo(fn, )</h3>
 
 <table class="variables-matrix input-arguments">
   <thead>
@@ -116,7 +82,7 @@
     
     <tr>
       <td>
-        fnSuccess
+        fn
         
         
       </td>
@@ -124,25 +90,7 @@
         <a href="" class="label type-hint type-hint-function">function</a>
       </td>
       <td>
-        <p>Executes when successfully retrieves
-                       the news feed.</p>
-
-        
-      </td>
-    </tr>
-    
-    <tr>
-      <td>
-        fnError
-        
-        
-      </td>
-      <td>
-        <a href="" class="label type-hint type-hint-function">function</a>
-      </td>
-      <td>
-        <p>Executes when fail to retrieve
-                       the news feed.</p>
+        <p>Any function that receives the information as an argument.</p>
 
         
       </td>
@@ -151,7 +99,9 @@
   </tbody>
 </table>
 
-<p>Retrieve the news feed.</p>
+<p>Retrieve the cached information about the user.
+If the information is not there, go to the backend to retrieve it using
+the method loadUserInfo()</p>
 
 
 

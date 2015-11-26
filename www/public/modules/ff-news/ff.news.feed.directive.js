@@ -3,7 +3,7 @@
  * @module ff.newsModule
  * @name ffNewsFeed
  * @description Directive responsible to render the news feed. 
- * Link to my module : {@link ff.newModule }
+ * Link to my module : {@link ff.newsModule }
  * [Link to the code](https://github.com/rafaelfernandesnet/fit-facebook/blob/master/www/public/modules/ff-news/ff.news.feed.directive.js)
  * @example 
  * <ff-news-feed> </ff-news-feed>

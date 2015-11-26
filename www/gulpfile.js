@@ -108,6 +108,16 @@ function useKarma(autotest) {
 
 gulp.task('dgeni', function() {
   try {
+
+    // copying image files
+    gulp.src('./fit-docs-package/templates/images/*.*')
+            .pipe(gulp.dest('./public/dgeni-docs/images'));
+
+    // copying css files
+    gulp.src('./fit-docs-package/templates/css/*.css')
+            .pipe(gulp.dest('./public/dgeni-docs/css'));
+
+    // compiling dgeni
     var dgeni = new Dgeni([require('./fit-docs-package')]);
     return dgeni.generate();
   } catch(x) {

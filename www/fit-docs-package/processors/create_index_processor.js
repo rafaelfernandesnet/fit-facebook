@@ -12,7 +12,7 @@ module.exports = function createIndexProcessor() {
       };
 
       docs.forEach(function(doc) {
-        indexDoc.childDocs.push(doc);
+        if (doc.docType == 'module') indexDoc.childDocs.push(doc);
       });
 
       indexDoc.childDocs.sort(function(doc) { return doc.name; });

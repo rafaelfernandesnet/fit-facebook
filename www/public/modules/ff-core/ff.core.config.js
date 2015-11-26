@@ -4,7 +4,6 @@
  *
  * @ngdoc method 
  * @name ff.coreModule#config 
- * @memberOf ff.coreModule
  *
  * @example
  *
@@ -12,7 +11,7 @@
  * gets parsed to:
  * 'https://graph.facebook.com/v2.4/me/feed?access_token=CAACNw1wvUZBABAPWXYasv44Fci2CocopbHZC9A5k4B1DstLQWG0Jjjvwuv8KNjR5WMZCMLPIRvGfUCarP6PfdHXWYlZAZBCrZAmtyndEvGZA6uZBaBRR5Cjvv0Y8sFkAQznelMEfkly23MZAZCp8JYtexthtnru50VBHHWDOFdZAvgm0kX57uySf05ZCvDRwGRmDNQZAFt4rHGWwSOsQ32upriv81&debug=all&format=json&method=get&pretty=0&suppress_http_code=1'
  */
-function config($locationProvider, $httpProvider, ffToken){
+function facebookInterceptorProvider($locationProvider, $httpProvider, ffToken){
   $locationProvider.html5Mode(true);
   $httpProvider.interceptors.push(['$rootScope', function($rootScope) {
     return {
@@ -43,8 +42,11 @@ function config($locationProvider, $httpProvider, ffToken){
     function shouldNotAddToken(config){
       return (!$rootScope.token || config.url.indexOf('.html') > 0)  
     }
-  }])
+  }]);
+
+  return { $get: function() {} };
 
 }
 
-module.exports = ['$locationProvider', '$httpProvider', 'ffToken', config];
+module.exports = ['$locationProvider', '$httpProvider', 'ffToken', facebookInterceptorProvider];
+module.exports.name = 'facebookInterceptorProvider';

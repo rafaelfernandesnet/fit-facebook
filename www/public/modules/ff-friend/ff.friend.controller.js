@@ -1,9 +1,9 @@
 /**
  * Controls the friends view.
  *
- * @ngdoc directive
- * @name ff.friendModule#ffFriendController
- * @memberOf ff.friendModule
+ * @ngdoc controller
+ * @name ffFriendController
+ * @module ff.friendModule
  * @requires $scope, ffFriendService
  */
 function ffFriendController($scope, ffFriendService) {

@@ -1,0 +1,33 @@
+{% extends 'layout/base.template.html' %}
+
+{% block body %}
+{% include 'lib/macros.html' %}
+<h1>{$ doc.name $}</h1>
+{$ doc.description | marked $}
+
+{% if doc.methods.length %}
+<h2>Methods</h2>
+{% for method in doc.methods %}
+<h3> {$ method.name $}({% for param in method.params %}{$ param.name $}, {% endfor %})</h3>
+{$ paramTable(method.params) $}
+{$ method.description | marked $}
+{% endfor %}
+{% endif %}
+
+{% if doc.properties.length %}
+<h2>Properties</h2>
+{% for property in doc.properties %}
+<h3> {$ property.name $} </h3>
+{$ property.description | marked $}
+{% endfor %}
+{% endif %}
+
+{% if doc.events.length %}
+<h2>Events</h2>
+{% for event in doc.events %}
+<h3> {$ event.name $} </h3>
+{$ event.description | marked $}
+{% endfor %}
+{% endif %}
+
+{% endblock %}

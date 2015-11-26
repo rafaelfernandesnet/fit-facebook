@@ -7,7 +7,7 @@ var linksPackage = require('dgeni-packages/links');
 var gitPackage = require('dgeni-packages/git');
 
 var path = require('canonical-path');
-
+var url = require('url');
 
 module.exports = new Package('fit-docs-package', [
   jsdocPackage,
@@ -16,6 +16,7 @@ module.exports = new Package('fit-docs-package', [
   gitPackage])
 
 .processor(require('./processors/create_index_processor'))
+.processor(require('./processors/modulePackageNameProcessor'))
 .processor(require('dgeni-packages/ngdoc/processors/memberDocs'))
 
 .config(function(debugDumpProcessor) {
@@ -25,7 +26,7 @@ module.exports = new Package('fit-docs-package', [
 .config(function(readFilesProcessor, writeFilesProcessor) {
   readFilesProcessor.basePath = path.resolve(__dirname,'../public');
   readFilesProcessor.sourceFiles = [
-    { include: 'modules/ff-news/*.js', exclude: 'bower_components/**' }
+    { include: 'modules/*/*.js', exclude: 'bower_components/**' }
   ];
   writeFilesProcessor.outputFolder = 'dgeni-docs';
 })
@@ -37,7 +38,14 @@ module.exports = new Package('fit-docs-package', [
   parseTagsProcessor.tagDefinitions.push(require('./tagdefs/example.js'));
 })
 
-.config(function(templateFinder, templateEngine, getInjectables) {
+.config(function(readFilesProcessor, writeFilesProcessor, renderDocsProcessor, templateFinder, templateEngine, getInjectables) {
+
+  var outputPath = path.resolve(readFilesProcessor.basePath, writeFilesProcessor.outputFolder);
+  console.log(outputPath);
+  renderDocsProcessor.helpers.getRelativeBasePath = function(doc) {
+    console.log(doc.path, doc.outputPath, url.resolve(doc.outputPath, outputPath));
+    return url.resolve(doc.outputPath, outputPath); // doc.path='/a/b/c' -> '../../..'
+  };
 
   templateFinder.templateFolders.unshift(path.resolve(__dirname, 'templates'));
 

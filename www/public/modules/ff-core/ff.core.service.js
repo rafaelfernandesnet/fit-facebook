@@ -3,7 +3,7 @@
  *
  * @ngdoc service
  * @name ffCoreService
- * @memberOf ff.coreModule
+ * @module ff.coreModule
  * @requires $http, $rootScope
  */
 function ffCoreService($http, $rootScope){
@@ -22,8 +22,7 @@ function ffCoreService($http, $rootScope){
    * Retrieve the information about the user.
    *
    * @ngdoc method 
-   * @methodOf ff.coreModule.ffCoreService
-   * @name ff.coreModule.ffCoreService#loadUserInfo  
+   * @name ffCoreService#loadUserInfo  
    * @param {function} fn Any function that receives the information as an argument.
    */
   function loadUserInfo(fn){
@@ -46,8 +45,7 @@ function ffCoreService($http, $rootScope){
    * the method loadUserInfo()
    *
    * @ngdoc method 
-   * @methodOf ff.coreModule.ffCoreService
-   * @name ff.coreModule.ffCoreService#getUserInfo  
+   * @name ffCoreService#getUserInfo  
    * @param {function} fn Any function that receives the information as an argument.
    */
   function getUserInfo(fn){
