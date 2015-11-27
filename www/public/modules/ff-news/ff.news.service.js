@@ -3,7 +3,7 @@
  *
  * @ngdoc service
  * @name ffNewsService
- * @memberOf ff.newsModule
+ * @module ff.newsModule
  * @requires $http, $windows, $rootScope
  */
 function ffNewsService($http, $window, $rootScope) {
@@ -18,8 +18,7 @@ function ffNewsService($http, $window, $rootScope) {
    * Post a new status.
    *
    * @ngdoc method 
-   * @methodOf ffNewsService
-   * @name ff.newsModule.ffNewsService#post  
+   * @name ffNewsService#post  
    * @param {String}   message New status information. 
    * @param {function} fnSuccess Executes when successfully
    *                        post a new status.
@@ -47,8 +46,7 @@ function ffNewsService($http, $window, $rootScope) {
    * Retrieve the news feed.
    *
    * @ngdoc method 
-   * @methodOf ffNewsService
-   * @name ff.newsModule.ffNewsService#activities  
+   * @name ffNewsService#activities  
    * @param {function} fnSuccess Executes when successfully retrieves
    *                        the news feed.
    * @param {function} fnError Executes when fail to retrieve

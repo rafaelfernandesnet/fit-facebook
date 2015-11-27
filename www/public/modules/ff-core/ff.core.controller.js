@@ -2,9 +2,9 @@
  * Represents the core controller, wrapping the 
  * whole app to assist with common features. 
  *
- * @ngdoc class
+ * @ngdoc controller
  * @name ffCoreController
- * @memberOf ff.coreModule
+ * @module ff.coreModule
  */
 function ffCoreController($scope, $location, ffToken, $window, $rootScope, $http, ffCoreService) {
   var vm = this; 

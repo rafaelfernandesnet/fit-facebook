@@ -1,0 +1,91 @@
+/* To customize the fit-facebook app look and feel */
+body{
+    margin: 2em;
+    margin-top: 1.2em;
+}
+
+h2 {
+    font-size: 1.8em;
+}
+
+.variables-matrix td {
+  vertical-align:top;
+  padding:5px;
+}
+
+.type-hint {
+  display:inline-block;
+  background: gray;
+}
+
+.variables-matrix .type-hint {
+  text-align:center;
+  min-width:60px;
+  margin:1px 5px;
+}
+
+.type-hint + .type-hint {
+  margin-top:5px;
+}
+
+.type-hint-expression {
+  background:purple;
+}
+
+.type-hint-date {
+  background:pink;
+}
+
+.type-hint-string {
+  background:#3a87ad;
+}
+
+.type-hint-function {
+  background:green;
+}
+
+.type-hint-object {
+  background:#999;
+}
+
+.type-hint-array {
+  background:#F90;;
+}
+
+.type-hint-boolean {
+  background:rgb(18, 131, 39);
+}
+
+.type-hint-number {
+  background:rgb(189, 63, 66);
+}
+
+.type-hint-regexp {
+  background: rgb(90, 84, 189);
+}
+
+.type-hint-domelement {
+  background: rgb(95, 158, 160);
+}
+.label {
+    display: inline;
+    padding: .2em .6em .3em;
+    font-size: 75%;
+    font-weight: 700;
+    line-height: 1;
+    color: #fff;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: .25em;
+}
+a.label.type-hint {
+	text-decoration: none;
+}
+table {
+    width: 100%;
+}
+th:first-child,
+td:first-child{
+  width:10em;
+}

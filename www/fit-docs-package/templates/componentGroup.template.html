@@ -1,0 +1,6 @@
+<h1>{$ doc.name $}</h1>
+<p>{$ doc.description $}</p>
+
+{% for component in doc.components %}
+<h2>{@link {$ component.id $} }</h2>
+{% endfor %}

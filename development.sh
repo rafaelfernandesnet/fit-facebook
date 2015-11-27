@@ -1,2 +1,2 @@
 node open.js
-nf start -j ./Procfile.dev
+foreman start -f ./Procfile.dev

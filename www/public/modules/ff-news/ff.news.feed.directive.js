@@ -1,10 +1,10 @@
 /**
  * @ngdoc directive
- * @memberOf ff.newsModule
+ * @module ff.newsModule
  * @name ffNewsFeed
  * @description Directive responsible to render the news feed. 
- *
- * {@link https://github.com/rafaelfernandesnet/fit-facebook/blob/master/www/public/modules/ff-news/ff.news.feed.directive.js Link to the code}
+ * Link to my module : {@link ff.newsModule }
+ * [Link to the code](https://github.com/rafaelfernandesnet/fit-facebook/blob/master/www/public/modules/ff-news/ff.news.feed.directive.js)
  * @example 
  * <ff-news-feed> </ff-news-feed>
  */
@@ -23,9 +23,9 @@ function ffNewsFeed() {
 }
 
 /**
- * @ngdoc class
- * @memberOf ff.newsModule
- * @name ff.newsModule#ffNewsFeedController
+ * @ngdoc controller
+ * @module ff.newsModule
+ * @name ffNewsFeedController
  * @description Controller responsible for the news feed.
  */
 function ffNewsFeedController($scope, $rootScope, ffNewsService, $timeout, _){

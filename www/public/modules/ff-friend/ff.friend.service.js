@@ -3,7 +3,6 @@
  *
  * @ngdoc service
  * @name ffFriendService
- * @memberOf ff.friendModule
  * @requires $http
  */
 function ffFriendService($http, $rootScope) {
@@ -15,8 +14,7 @@ function ffFriendService($http, $rootScope) {
    * Retrieve the list of friends.
    *
    * @ngdoc method 
-   * @methodOf ffFriendService
-   * @name ff.friendModule.ffFriendService#list  
+   * @name ffFriendService#list  
    * @param {function} fnSuccess Executes when successfully retrieves
    *                        the list of friends receiving the result.
    * @param {function} fnError Executes when fail to retrieve

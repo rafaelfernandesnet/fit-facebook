@@ -12,7 +12,7 @@ var logedInUsers = [];
 
 loadAllApis();
 
-var wwwDir = production ? '/www/dist/fit-facebook' : '/www/public';
+var wwwDir = '/www/public';
 
 var www = express.static(__dirname + wwwDir);
 app.use('/', www);

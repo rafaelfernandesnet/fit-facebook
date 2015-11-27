@@ -1,0 +1,11 @@
+{% extends 'layout/base.template.html' %}
+
+{% block body %}
+<h1>Fit App</h1>
+<div>
+  {% for child in doc.childDocs %}
+  <h2><a href="{$ child.path $}">{$ child.name $}</a></h2>
+  {$ child.description | marked $}
+  {% endfor %}
+</div>
+{% endblock %}

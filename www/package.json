@@ -5,8 +5,9 @@
     "angular-jsdoc": "^0.3.8",
     "canonical-path": "0.0.2",
     "dgeni": "^0.4.1",
-    "dgeni-packages": "^0.10.19",
+    "dgeni-packages": "^0.11.0",
     "jasmine-core": "^2.1.3",
+    "jasmine-node": "^1.14.5",
     "jsdoc": "^3.3.2",
     "karma-chrome-launcher": "^0.1.7",
     "karma-jasmine": "^0.3.2"
